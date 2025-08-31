@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div id="header-container"></div>
+
+  <main>
+    <main class="projects-page">
+
+  <!-- Cabecera -->
+  <section class="seccioncontenthead">
+    <h2>📂 Nuestros Proyectos</h2>
+    <p>Una selección de trabajos y casos de éxito donde combinamos Marketing Digital y Experiencia de Usuario para obtener resultados reales.</p>
+  </section>
+
+  <!-- Grid de Proyectos -->
+  <section class="projects-grid">
+    
+    <article class="project-card">
+      <img src="img/proyecto1.jpg" alt="Proyecto 1">
+      <h3>Rediseño web para eCommerce</h3>
+      <p>Aumento del 35% en la conversión gracias a un rediseño enfocado en la experiencia de usuario y optimización del embudo de compra.</p>
+      <a href="proyecto1.html" class="btn-ver">Ver más</a>
+    </article>
+
+    <article class="project-card">
+      <img src="img/proyecto2.jpg" alt="Proyecto 2">
+      <h3>Estrategia de redes sociales</h3>
+      <p>Campaña multiplataforma en Instagram y LinkedIn que incrementó el engagement en un 50% en solo tres meses.</p>
+      <a href="proyecto2.html" class="btn-ver">Ver más</a>
+    </article>
+
+    <article class="project-card">
+      <img src="img/proyecto3.jpg" alt="Proyecto 3">
+      <h3>Optimización de conversión</h3>
+      <p>Implementación de test A/B y mejoras de usabilidad que redujeron un 40% el abandono del carrito en una tienda online.</p>
+      <a href="proyecto3.html" class="btn-ver">Ver más</a>
+    </article>
+
+  </section>
+
+</main>
+
+    <h2>Contenido de esta página</h2>
+    <!-- ... -->
+  </main>
+
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header-container").innerHTML = data;
+      });
+  </script>
+    
+</body>
+</html>

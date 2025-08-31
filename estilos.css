@@ -1,0 +1,765 @@
+/* reseteo global de margenes y rellenos*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgba(251, 252, 249, 0.555);
+    line-height: 1.6;
+}
+  
+/* cabecera*/
+.cabecera {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+padding: 10px 20px;
+background-color: #f5f5f0; /* Establece el color de fondo de las columnas. En este caso, un tono de verde claro (#99e9d1). */
+
+}
+  
+.cabecera img {
+    width: 90px;
+    height: auto;
+    margin-right: 20px;
+}
+.cabecera h1 {
+    font-size: 24px;
+    color: #333;
+
+}
+
+.cabecera img {
+  border-radius: 8px; /* Esquinas redondeadas */
+  height: 80px;       /* Opcional: ajusta altura del logo */
+  width: auto;        /* Mantiene proporción */
+}
+
+
+
+/*Explicación:
+
+display: flex; activa el sistema Flexbox, lo que permite alinear los elementos dentro del contenedor (en este caso, <header>).
+
+align-items: center; asegura que todos los elementos (logo y menú) estén centrados verticalmente.
+
+justify-content: space-between; distribuye los elementos a los extremos opuestos de la cabecera (logo a la izquierda, menú a la derecha).
+
+padding: 10px 20px; le da un poco de espacio dentro del header, entre el borde y los elementos.
+
+background-color: #fff; da un fondo blanco a la cabecera.*/
+
+/* menu de navegacion*/
+.menu {
+    margin-left: auto;
+    margin-right: 20px;
+}
+.menu ul {
+    list-style-type: none; /* Quita los puntos de la lista */
+    display: flex;  /*organiza las opciones en la fila*/
+    gap: 20px;   /* espacio estre los elemntos*/
+}
+
+.menu li a {
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    color: #1f1d1d; /* Color de texto */
+    font-weight: normal; /* Pone el texto en negrita */
+    font-size: 18px; /* Tamaño de fuente */
+    padding: 10px 15px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+  }
+
+  .menu li a:hover {
+    background-color: #181716; /* Color de fondo cuando se pasa el ratón */
+    color: white; /* Cambia el color del texto */
+    transform: scale (1.1);  /* Efecto de zoom al pasar el ratón */
+  }
+  /* Explicación:
+
+.menu ul: Alineamos las opciones del menú en fila con display: flex;.
+
+gap: 20px;: Añadimos espacio entre los elementos de la lista.
+
+.menu li a: Modificamos los enlaces:
+
+text-decoration: none; quita el subrayado por defecto.
+
+color: #333; hace que el texto sea de un color gris oscuro.
+
+font-weight: bold; pone los enlaces en negrita.
+
+font-size: 18px; aumenta el tamaño de la fuente.*/
+/* Secciones */
+
+
+    
+    
+section {
+    margin: 20px 0; /* Margen superior e inferior */
+    padding: 20px; /* Relleno dentro de las secciones */
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+  }
+  
+  h2 {
+    color: #fff; /* Color para los títulos */
+    font-size: 24px; /* Tamaño de los títulos */
+    margin-bottom: 10px; /* Espacio debajo de los títulos */
+  }
+  /*Explicación:
+
+section: A todas las secciones les damos un margen de 20px arriba y abajo para que no estén tan pegadas.
+
+padding: 20px;: Les damos un relleno interno para que el contenido no esté pegado a los bordes.
+
+background-color: #fff;: Les damos un fondo blanco.
+
+border-radius: 8px;: Redondeamos los bordes de las secciones para un look más suave.
+
+h2: Estilizamos los títulos:
+
+color: #333; cambia el color del texto a un gris oscuro.
+
+font-size: 24px; hace los títulos más grandes.
+
+margin-bottom: 10px; añade espacio debajo de los títulos para que el contenido no esté tan apretado.*/
+
+/* Estilos para el mensaje */
+
+  
+
+  /* El <div class="modal"> cubre toda la pantalla con un fondo semitransparente.
+
+Dentro, el <div class="modal-content"> es la ventana blanca que se muestra encima.
+
+El <span class="cerrar">×</span> es la “X” para cerrar la ventana.
+
+El <form> contiene los campos que el usuario llena. Inicialmente está oculto (display: none).
+
+Se muestra centrado y con fondo oscuro al abrirlo.
+*/
+
+  #banner {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    margin: 20px 20px; /* 20px de margen a izquierda y derecha */
+    padding: 20px; /* opcional, para que el contenido no quede pegado */
+  }
+
+  #btnaqui {
+  background-color: #f5f5f0; /* Establece el color de fondo de las columnas. En este caso, un tono de verde claro (#99e9d1). */
+  color: rgb(36, 29, 29);
+  border: none;
+  margin-top: 10px;
+  padding: 10px 24px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+  }
+
+  #btnaqui:hover {
+    background-color: aqua;
+  }
+
+/*cogemos siempres el nombre de la class dentro del div del formulario */
+ /* ==== FORMULARIO DE AYUDA MODAL ==== */
+
+.bform {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5); /* Fondo oscuro y translúcido */
+  box-sizing: border-box;
+}
+
+.bform-content {
+  background-color: #fff;
+  margin: 6% auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  text-align: left;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.bform-content h3 {
+  font-size: 22px;      /* Igual que #test-ux h3 */
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: normal;
+}
+
+.bform-content input,
+.bform-content textarea {
+  width: 100%;          /* Igual que input[type="email"] del test UX */
+  padding: 10px 14px;   /* Igual que input[type="email"] */
+  font-size: 16px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.bform-content input::placeholder,
+.bform-content textarea::placeholder {
+  color: #666;
+  font-size: 16px;
+  opacity: 1;
+}
+
+
+
+.bform-content button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background-color: #28a745;
+  color: white;
+  font-size: 17px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 25px;
+  transition: background-color 0.3s ease;
+}
+
+.bform-content button[type="submit"]:hover {
+  background-color: #218838;
+ 
+}
+
+.cerrar {
+  position: absolute;
+  top: 14px;
+  right: 24px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.cerrar:hover {
+  color: #000;
+}
+
+  .Services {
+    display: flex; /* Esto convierte el contenedor (.Services) en un contenedor flexible, donde los elementos hijos (las columnas) se distribuyen en línea, de izquierda a derecha. */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible del área de la página. */
+    height: auto; /* La altura se ajustará automáticamente en función del contenido dentro de las columnas. */
+    gap: 10px; /* Añade un espacio de 10px entre las columnas. Esto ayuda a separar visualmente las columnas sin necesidad de márgenes. */
+  }
+  
+  /* Estilos para cada una de las columnas */
+  .columna {
+    flex: 1; /* Hace que cada columna ocupe el mismo espacio disponible dentro del contenedor. '1' significa que se distribuyen proporcionalmente de forma equitativa. */
+    padding: 30px; /* Añade espacio interno de 30px en todos los lados de cada columna, lo que hace que el contenido dentro de ellas no toque los bordes. */
+    box-sizing: border-box; /* Esto asegura que el padding y los bordes se incluyan en el cálculo del tamaño total de las columnas. Es decir, no aumentará el tamaño de la columna más allá del que se le asignó. */
+    border: 1px solid #6b6a74; /* Aplica un borde de 1px de color rojo (#cc3838) alrededor de cada columna. */
+    border-radius: 8px; /* Redondea las esquinas del borde de la columna para dar un efecto de suavizado. */
+    background-color: #f5f5f0; /* Establece el color de fondo de las columnas. En este caso, un tono de verde claro (#99e9d1). */
+    cursor: pointer; /* Cambia el cursor a una mano cuando el usuario pase sobre la columna, indicando que es interactuable (clickeable). */
+  }
+  
+  /* Estilos para los encabezados dentro de las columnas */
+  .columna h3 {
+    margin-top: 0; /* Elimina cualquier espacio extra encima del título <h3>. Esto es útil si no quieres que haya un margen por defecto. */
+    color: #333; /* Establece el color del texto del encabezado en un tono oscuro (#333), lo que hace que sea más legible. */
+    
+  }
+  
+  /* Estilos para los párrafos dentro de las columnas */
+  .columna p {
+    color: #666; /* El color del texto del párrafo es gris oscuro (#666), para que sea menos intenso que el título. */
+    font-size: 14px; /* Establece el tamaño de la fuente en 14px para los párrafos, lo que hace que el texto sea legible pero no tan grande como el título. */
+    
+  }
+
+  video {
+    border-radius: 30px; /* Aplica bordes redondeados a todos los bordes */
+    padding: 20px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  .columna a {
+    text-decoration: none;
+  }
+
+ /* ====== ESTILOS TEST UX ====== */
+
+/* Estilos generales del contenedor del test */
+#test-ux {
+  text-align: center;
+  margin-top: 50px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#test-ux h3 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#test-ux p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Botón para abrir el test */
+#btntest {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+}
+
+#btntest:hover {
+  background-color: #005fa3;
+}
+
+/* Modal completo */
+.btest {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Contenido del modal */
+.btest-content {
+  background-color: #ffffff;
+  margin: 60px auto;
+  padding: 40px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Botón cerrar (X) */
+.cerrar {
+  color: #aaa;
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.cerrar:hover {
+  color: #000;
+}
+
+/* Formulario UX */
+form#ux-test {
+  text-align: left;
+}
+
+/* Fieldsets modernos */
+fieldset {
+  margin-bottom: 30px;
+  padding: 20px 25px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+}
+
+legend {
+  font-weight: bold;
+  font-size: 20px;
+  color: #0077cc;
+  margin-bottom: 15px;
+  display: block;
+}
+
+label {
+  font-size: 16px;
+  display: block;
+  margin: 12px 0 4px;
+  color: #333;
+}
+
+input[type="radio"] {
+  margin-right: 6px;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+input[type="email"] {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  margin-top: 8px;
+}
+
+/* Botón de enviar resultado */
+button[type="button"] {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background-color: #28a745;
+  color: white;
+  font-size: 17px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 25px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="button"]:hover {
+  background-color: #218838;
+}
+
+
+/* Resultado visual */
+#resultado-test {
+  margin-top: 25px;
+  padding: 18px;
+  background-color: #e6ffed;
+  border: 1px solid #94e4b8;
+  border-radius: 8px;
+  color: #1a6b3b;
+  font-weight: 600;
+  text-align: center;
+}
+/* aqui tenemos el estilo de los banner de titulo de cada pagina de servicios*/
+
+#banneraudi {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    margin: 20px 20px; /* 20px de margen a izquierda y derecha */
+    
+    
+    
+  }
+
+  .seccion1audi {
+    display: flex; /* Esto convierte el contenedor (.Services) en un contenedor flexible, donde los elementos hijos (las columnas) se distribuyen en línea, de izquierda a derecha. */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible del área de la página. */
+    height: auto; /* La altura se ajustará automáticamente en función del contenido dentro de las columnas. */
+    gap: 10px; /* Añade un espacio de 10px entre las columnas. Esto ayuda a separar visualmente las columnas sin necesidad de márgenes. */
+    
+  }
+  
+  /* Estilos para cada una de las columnas */
+  .columna1 {
+    flex: 1; /* Hace que cada columna ocupe el mismo espacio disponible dentro del contenedor. '1' significa que se distribuyen proporcionalmente de forma equitativa. */
+    padding: 30px; /* Añade espacio interno de 30px en todos los lados de cada columna, lo que hace que el contenido dentro de ellas no toque los bordes. */
+    box-sizing: border-box; /* Esto asegura que el padding y los bordes se incluyan en el cálculo del tamaño total de las columnas. Es decir, no aumentará el tamaño de la columna más allá del que se le asignó. */
+    border: 1px solid #6b6a74; /* Aplica un borde de 1px de color rojo (#cc3838) alrededor de cada columna. */
+    border-radius: 8px; /* Redondea las esquinas del borde de la columna para dar un efecto de suavizado. */
+    background-color: #f5f5f0; /* Establece el color de fondo de las columnas. En este caso, un tono de verde claro (#99e9d1). */
+    overflow: hidden;
+  }
+  
+  /* Estilos para los encabezados dentro de las columnas */
+  .columna1 h3 {
+    margin-top: 20px; /* Elimina cualquier espacio extra encima del título <h3>. Esto es útil si no quieres que haya un margen por defecto. */
+    color: #333; /* Establece el color del texto del encabezado en un tono oscuro (#333), lo que hace que sea más legible. */
+    
+  }
+  
+  /* Estilos para los párrafos dentro de las columnas */
+  .columna1 p {
+    color: #666; /* El color del texto del párrafo es gris oscuro (#666), para que sea menos intenso que el título. */
+    font-size: 14px; /* Establece el tamaño de la fuente en 14px para los párrafos, lo que hace que el texto sea legible pero no tan grande como el título. */
+    
+  }
+
+  .columna1 ul {
+  padding-left: 20px;
+  margin-top: 20px;
+}
+
+.columna1 li {
+  color: #444;
+  font-size: 14px;
+  margin-bottom: 6px;
+  margin-top: 20px;
+}
+.columna1 video {
+  width: 100%;
+  height: 300px;
+  object-fit:none;
+  object-position: 40% 35%;
+  border-radius: 8px;
+  display:block;
+  padding: 0%;
+  
+}
+
+.oferta-destacada {
+  font-weight: bold;
+  color: #e0a800 !important; /* tono amarillo mostaza */
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.icono {
+  font-size: 1.2rem;
+  line-height: 1;
+
+}
+
+  a {
+    text-decoration: none;
+  }
+  .columna1 a {
+    text-decoration: none;
+  }
+
+
+  /*estilo del footer para todas las paginas*/
+  footer {
+    background-color: #333; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    text-align: center; /* Centra el texto */
+    padding: 20px; /* Espacio interno */
+    position: relative; /* Posicionamiento relativo para el footer */
+    bottom: 0; /* Asegura que esté al final de la página */
+    width: 100%; /* Ocupa todo el ancho de la página */
+  }
+
+ 
+/* Da a .seccioncontenthead el mismo estilo que .columna1 */
+.seccioncontenthead {
+  flex: 1;
+  padding: 30px;
+  box-sizing: border-box;
+  border: 1px solid #6b6a74;
+  border-radius: 8px;
+  background-color: #f5f5f0;
+  overflow: hidden;
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.seccioncontenthead h3 {
+  color: #333;
+}
+
+.seccioncontenthead p {
+  color: #555555;
+  font-size: 14px;
+}
+
+.seccioncontent {
+  flex: 1;
+  padding: 50px;
+  box-sizing: border-box;
+  border: 1px solid #6b6a74;
+  border-radius: 8px;
+  background-color: #f5f5f0;
+  overflow: hidden;
+  text-align: left;
+  margin-left: 20px;
+  margin-right: 20px;
+  
+}
+
+.news-page {
+  padding: 2rem;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.news-card {
+  background: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.news-card:hover {
+  transform: scale(1.02);
+}
+
+.news-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.news-card h4 {
+  margin: 1rem;
+  font-size: 1.1rem;
+}
+
+.news-card p {
+  margin: 0 1rem 1rem;
+  font-size: 0.95rem;
+}
+
+.btn-leer {
+  display: inline-block;
+  margin: 0 1rem 1rem;
+  padding: 0.5rem 1rem;
+  background: #333;
+  color: #fff;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+.btn-leer:hover {
+  background: #555;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.project-card {
+  background: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.02);
+}
+
+.project-card img {
+  width: 100%;
+  height: auto;
+}
+
+.project-card h3 {
+  margin: 1rem;
+  font-size: 1.2rem;
+}
+
+.project-card p {
+  margin: 0 1rem 1rem;
+  font-size: 0.95rem;
+}
+
+.btn-ver {
+  display: inline-block;
+  margin: 0 1rem 1rem;
+  padding: 0.5rem 1rem;
+  background: #333;
+  color: #fff;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+.btn-ver:hover {
+  background: #555;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.contact-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.contact-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.contact-card a {
+  color: #333;
+  text-decoration: none;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+
+.btn-enviar {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-enviar:hover {
+  background: #555;
+}
+

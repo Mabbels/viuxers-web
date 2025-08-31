@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div id="header-container"></div>
+
+  <main>
+  <section id="banneraudi">
+        <h2>NEWS</h2>
+        <p>Descubre lo último de Viuxer: tendencias, casos de éxito y nuestras últimas publicaciones en redes.</p>
+        </section>
+    
+     <main class="news-page">
+
+
+  <!-- Bloque Instagram -->
+  <section class="seccioncontent">
+    <h3>📸 Últimas publicaciones en Instagram</h3>
+    <p>Contenido fresco directamente desde nuestro perfil. Síguenos para más ideas y consejos de UX & Marketing.</p>
+
+    <!-- Widget Instagram (LightWidget) -->
+    <div class="instagram-feed">
+      <!-- Sustituye el src por el tuyo de LightWidget -->
+      <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+      <iframe src="//lightwidget.com/widgets/3c842fdbbf1a51d493191c264faa234a.html" 
+              scrolling="no" 
+              allowtransparency="true" 
+              class="lightwidget-widget" 
+              style="width:100%;border:0;overflow:hidden;">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- Bloque Noticias Manuales -->
+  <section class="seccioncontent">
+    <h3>🖋 Noticias y artículos destacados</h3>
+    <div class="news-grid">
+      <article class="news-card">
+        <img src="img/noticia1.jpg" alt="Título noticia 1">
+        <h4>Mejorando la conversión de un eCommerce en Sevilla</h4>
+        <p>Descubre cómo logramos aumentar un 35% las ventas aplicando principios de UX y estrategias de marketing digital...</p>
+        <a href="noticia1.html" class="btn-leer">Leer más</a>
+      </article>
+
+      <article class="news-card">
+        <img src="img/noticia2.jpg" alt="Título noticia 2">
+        <h4>Claves para optimizar tu Instagram en 2025</h4>
+        <p>Te compartimos 5 consejos prácticos para mejorar el engagement y la conversión en redes sociales...</p>
+        <a href="noticia2.html" class="btn-leer">Leer más</a>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+  </main>
+
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header-container").innerHTML = data;
+      });
+  </script>
+    
+</body>
+</html>

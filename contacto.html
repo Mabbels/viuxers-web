@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div id="header-container"></div>
+
+  <main>
+
+  <main class="contact-page">
+
+  <!-- Cabecera -->
+  <section class="seccioncontenthead">
+    <h2>📩 Contacta con Viuxer</h2>
+    <p>Cuéntanos tu proyecto o duda y te responderemos lo antes posible. Combinamos Marketing Digital y UX para que tu negocio crezca.</p>
+  </section>
+
+  <!-- Info de contacto -->
+  <section class="contact-info">
+    <div class="contact-card">
+      <h3>📍 Dirección</h3>
+      <p>Palomares del Río, Sevilla</p>
+    </div>
+    <div class="contact-card">
+      <h3>📞 Teléfono</h3>
+      <p><a href="tel:+34123456789">+34 123 456 789</a></p>
+    </div>
+    <div class="contact-card">
+      <h3>✉️ Email</h3>
+      <p><a href="mailto:info@viuxer.com">info@viuxer.com</a></p>
+    </div>
+  </section>
+
+  <!-- Formulario -->
+  <section class="contact-form">
+    <h3>Envíanos un mensaje</h3>
+    <form id="form-contact">
+      <div class="form-group">
+        <label for="nombre">Nombre*</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Correo electrónico*</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="mensaje">Mensaje*</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn-enviar">Enviar mensaje</button>
+    </form>
+  </section>
+
+</main>
+
+  
+  </main>
+
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header-container").innerHTML = data;
+      });
+  </script>
+    
+</body>
+</html>
