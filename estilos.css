@@ -763,3 +763,61 @@ input, textarea {
   background: #555;
 }
 
+@media (max-width: 768px) {
+  .cabecera {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+  .cabecera img {
+    margin-bottom: 10px;
+    margin-right: 0;
+    height: 60px;
+  }
+  .menu ul {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+  }
+  section,
+  .columna,
+  .columna1,
+  .seccioncontenthead,
+  .seccioncontent {
+    padding: 12px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .Services,
+  .seccion1audi {
+    flex-direction: column;
+    gap: 0;
+  }
+  .bform-content,
+  .btest-content {
+    padding: 16px;
+    max-width: 98vw;
+  }
+  .news-grid,
+  .projects-grid,
+  .contact-info {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .contact-form {
+    padding: 1rem;
+  }
+  .project-card,
+  .news-card,
+  .contact-card {
+    margin-bottom: 1rem;
+  }
+  h1, h2, h3 {
+    font-size: 1.2rem;
+  }
+  .menu li a {
+    font-size: 16px;
+    padding: 8px 10px;
+  }
+}
