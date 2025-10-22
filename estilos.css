@@ -878,6 +878,39 @@ section, .Services, .seccioncontent, .columna { word-wrap:break-word; }
   :root { font-size: clamp(13px, 3.6vw, 16px); }
 }
 
+/* Ajustes finales para móvil: evita desbordes y fuerza menú hamburguesa */
+@media (max-width: 480px) {
+  body { overflow-x: hidden; } /* evita scroll horizontal inesperado */
+
+  /* Mostrar el botón hamburguesa y ocultar el menú por defecto */
+  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  #main-nav.menu { display: none; position: absolute; top: 100%; right: 1rem; z-index: 1200;
+                   background: #fff; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+                   width: calc(100% - 2rem); max-width: 360px; padding: 0.75rem; }
+
+  /* Clase que activa el menú */
+  #main-nav.menu.open { display: block; }
+
+  /* Mejora layout de tarjetas y evita overflow */
+  .Services { grid-template-columns: 1fr !important; gap: 0.75rem; }
+  .columna, .columna1, .seccioncontent { padding: 0.9rem; margin: 0; }
+
+  /* Asegura vídeos/iframes e imágenes 100% y que no excedan ancho */
+  .columna video, .columna img, iframe.lightwidget-widget { max-width: 100%; width: 100%; height: auto; display: block; border-radius: 8px; }
+
+  /* Modal adaptado */
+  .bform-content, .btest-content { width: 94vw; max-width: 640px; padding: 0.9rem; margin: 6vh auto; box-sizing: border-box; }
+
+  /* Formularios y botones táctiles */
+  input[type="text"], input[type="email"], textarea, button { font-size: 1rem; min-height: 44px; }
+
+  /* Ajuste de textos */
+  h1,h2,h3 { line-height: 1.2; }
+
+  /* Evita márgenes demasiado grandes en móviles */
+  section { padding-left: 0.9rem; padding-right: 0.9rem; }
+}
+
 /* Mejorar alineación y apariencia de radios en el test UX */
 .btest-content fieldset,
 .btest-content fieldset .options {

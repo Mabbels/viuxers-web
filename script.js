@@ -186,16 +186,18 @@ if (formAyuda) {
   });
 }
 
-// Toggle menú hamburguesa (movil)
-(function(){
+//# sourceMappingURL=main.js.map
+(function() {
   const toggle = document.getElementById('nav-toggle');
   const nav = document.getElementById('main-nav');
   if (!toggle || !nav) return;
-  toggle.addEventListener('click', function(){
-    const open = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
+  toggle.addEventListener('click', function () {
+    const opened = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(opened));
+    // clase visual opcional para animar el icono
+    toggle.classList.toggle('open', opened);
   });
-  // cerrar menú al hacer click en un enlace
+  // cerrar menú al clicar un enlace
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     nav.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
