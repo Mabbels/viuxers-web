@@ -11,58 +11,148 @@ body {
     line-height: 1.6;
 }
   
-/* cabecera*/
+/* HEADER STICKY + SHRINK ON SCROLL */
 .cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  background: rgba(255,255,255,0.96); /* mantiene color/tono original */
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.75rem 1rem;
+  padding: 0.9rem 1rem;
+  transition: padding 240ms ease, box-shadow 240ms ease;
 }
-.cabecera img { height: 64px; width: auto; }
-.cabecera h1 { font-size: clamp(1rem, 2.8vw, 1.5rem); margin: 0; color: var(--text); }
-
-/* menu de navegacion*/
-.menu {
-    margin-left: auto;
-    margin-right: 20px;
-}
-.menu ul {
-    list-style-type: none; /* Quita los puntos de la lista */
-    display: flex;  /*organiza las opciones en la fila*/
-    gap: 20px;   /* espacio estre los elemntos*/
+.cabecera.scrolled {
+  padding: 0.48rem 1rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.09);
 }
 
-.menu li a {
-    text-decoration: none; /* Quita el subrayado de los enlaces */
-    color: #1f1d1d; /* Color de texto */
-    font-weight: normal; /* Pone el texto en negrita */
-    font-size: 18px; /* Tamaño de fuente */
-    padding: 10px 15px; /* Espaciado interno */
-    border-radius: 8px; /* Bordes redondeados */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+/* Agrupar logo + título a la izquierda y empujar el nav a la derecha */
+.cabecera .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;            /* espacio entre logo y título */
+}
+
+/* Asegura que el nav quede a la derecha */
+.cabecera .menu {
+  margin-left: auto;
+}
+
+/* Ajustes del título para que no ocupe demasiado espacio y se alinee bien */
+.cabecera .brand h1 {
+  font-size: clamp(1rem, 2.6vw, 1.25rem);
+  margin: 0;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* En móviles, permite que el título reduzca y el logo mantenga altura */
+@media (max-width: 480px) {
+  .cabecera .brand h1 {
+    font-size: clamp(.9rem, 3.8vw, 1rem);
   }
+  .cabecera img { height: 44px; }
+}
 
-  .menu li a:hover {
-    background-color: #181716; /* Color de fondo cuando se pasa el ratón */
-    color: white; /* Cambia el color del texto */
-    transform: scale (1.1);  /* Efecto de zoom al pasar el ratón */
+/* reduce logo y título suavemente */
+.cabecera img {
+  height: clamp(40px, 6vw, 64px);
+  width: auto;
+  transition: height 240ms ease;
+}
+.cabecera.scrolled img {
+  height: clamp(28px, 4.5vw, 48px);
+}
+.cabecera h1 {
+  font-size: clamp(1rem, 2.6vw, 1.5rem);
+  margin: 0;
+  transition: font-size 240ms ease, opacity 240ms ease;
+}
+.cabecera.scrolled h1 {
+  font-size: clamp(.95rem, 2.0vw, 1.15rem);
+  opacity: 0.95;
+}
+
+/* HAMBURGER ICON */
+.nav-toggle {
+  display: none; /* visible solo en media queries */
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.nav-toggle .hamburger {
+  width: 22px;
+  height: 2px;
+  background: var(--text, #222);
+  position: relative;
+  transition: background 200ms ease;
+}
+.nav-toggle .hamburger::before,
+.nav-toggle .hamburger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: var(--text, #222);
+  transition: transform 220ms ease, top 220ms ease;
+}
+.nav-toggle .hamburger::before { top: -7px; }
+.nav-toggle .hamburger::after  { top:  7px; }
+
+/* state when open -> cross */
+.nav-toggle.open .hamburger { background: transparent; }
+.nav-toggle.open .hamburger::before { transform: rotate(45deg); top: 0; }
+.nav-toggle.open .hamburger::after  { transform: rotate(-45deg); top: 0; }
+
+/* NAV MENU - desktop layout kept */
+.menu { position: relative; }
+.menu ul { display:flex; gap:1.25rem; align-items:center; margin:0; padding:0; list-style:none; }
+
+/* MOBILE: convert menu to panel and animate via max-height */
+@media (max-width: 768px) {
+  .nav-toggle { display: inline-flex; }
+  .menu {
+    position: absolute;
+    top: 100%;
+    right: 1rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+    width: calc(100% - 2rem);
+    max-width: 340px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 360ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease;
   }
-  /* Explicación:
+  .menu.open {
+    max-height: 420px; /* suficiente para varios enlaces */
+    opacity: 1;
+  }
+  .menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+  /* ensure nav sits above other elements on mobile */
+  .cabecera { padding-bottom: 0.6rem; }
+}
 
-.menu ul: Alineamos las opciones del menú en fila con display: flex;.
+/* small polish: clickable area larger for menu items on mobile */
+@media (max-width: 480px) {
+  .menu ul a { padding: 10px 12px; display:block; border-radius:6px; }
+  .menu ul a:active { background: rgba(0,0,0,0.03); }
+}
 
-gap: 20px;: Añadimos espacio entre los elementos de la lista.
-
-.menu li a: Modificamos los enlaces:
-
-text-decoration: none; quita el subrayado por defecto.
-
-color: #333; hace que el texto sea de un color gris oscuro.
-
-font-weight: bold; pone los enlaces en negrita.
-
-font-size: 18px; aumenta el tamaño de la fuente.*/
 /* Secciones */
 
 
@@ -337,189 +427,159 @@ Se muestra centrado y con fondo oscuro al abrirlo.
   position: relative;
 }
 
-/* Botón cerrar (X) */
-.cerrar {
-  color: #aaa;
-  position: absolute;
-  top: 16px;
-  right: 24px;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.3s;
+/* TEST UX MODAL: scrollbar discreto a la derecha + mejora visual */
+.btest-content {
+  overflow-y: auto;       /* permite scroll vertical */
+  overflow-x: hidden;     /* evita scroll horizontal y barras abajo */
+  padding-right: 14px;    /* reserva espacio para el scrollbar invisible y evita solapamientos */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable; /* reserva espacio en navegadores que lo soportan */
 }
 
-.cerrar:hover {
-  color: #000;
+/* Firefox: pulgar fino y transparente por defecto */
+.btest-content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.06) transparent;
 }
 
-/* Formulario UX */
-form#ux-test {
+/* WebKit (Chrome, Edge, Safari): track transparente; thumb tenue y más visible al hover */
+.btest-content::-webkit-scrollbar {
+  width: 8px;              /* solo vertical */
+}
+
+.btest-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.btest-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.06); /* casi invisible por defecto */
+  border-radius: 6px;
+  transition: background-color 160ms ease;
+}
+
+/* Al pasar ratón sobre el modal o hacer scroll, el pulgar se intensifica para indicar la barra */
+.btest-content:hover::-webkit-scrollbar-thumb,
+.btest-content:active::-webkit-scrollbar-thumb,
+.btest-content::-webkit-scrollbar-thumb:active {
+  background-color: rgba(0,0,0,0.18);
+}
+
+/* --- Mejora de diseño / visibilidad del contenido del modal --- */
+.btest-content {
+  background: #ffffff;
+  padding: 1.25rem 1rem;           /* menos padding horizontal para móviles */
+  border-radius: 14px;
+  box-shadow: 0 18px 42px rgba(0,0,0,0.18);
+  color: #222;
+  line-height: 1.45;
+}
+
+/* Título y subtítulo más claros y legibles */
+.btest-content h3 {
+  font-size: 1.25rem;
+  color: #0f2433;                 /* tono oscuro pero no negro */
+  margin-bottom: 0.5rem;
   text-align: left;
 }
 
-/* Fieldsets modernos */
-fieldset {
-  margin-bottom: 30px;
-  padding: 20px 25px;
-  border: 2px solid #e0e0e0;
-  border-radius: 12px;
-  background-color: #f9f9f9;
+.btest-content p.lead {
+  color: #394949;
+  margin-bottom: 1rem;
+  font-size: 0.98rem;
 }
 
-legend {
-  font-weight: bold;
-  font-size: 20px;
-  color: #0077cc;
-  margin-bottom: 15px;
-  display: block;
-}
-
-label {
-  font-size: 16px;
-  display: block;
-  margin: 12px 0 4px;
-  color: #333;
-}
-
-input[type="radio"] {
-  margin-right: 6px;
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-input[type="email"] {
-  width: 100%;
-  padding: 10px 14px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  box-sizing: border-box;
-  margin-top: 8px;
-}
-
-/* Botón de enviar resultado */
-button[type="button"] {
-  display: block;
-  width: 100%;
+/* Fieldsets y opciones: mayor separación y organización */
+.btest-content fieldset {
+  margin: 0 0 1rem 0;
   padding: 14px;
-  background-color: #28a745;
-  color: white;
-  font-size: 17px;
-  border: none;
   border-radius: 10px;
-  cursor: pointer;
-  margin-top: 25px;
-  transition: background-color 0.3s ease;
+  border: 1px solid #e6eef0;
+  background: #fbfdfe;
 }
 
-button[type="button"]:hover {
-  background-color: #218838;
+.btest-content legend {
+  font-weight: 700;
+  color: #0366a6;
+  margin-bottom: 8px;
+  font-size: 1rem;
 }
 
+/* Opciones alineadas y accesibles */
+.btest-content .options {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
 
-/* Resultado visual */
-#resultado-test {
-  margin-top: 25px;
-  padding: 18px;
-  background-color: #e6ffed;
-  border: 1px solid #94e4b8;
+/* Cada opción envuelta gana espacio clickable y alineación */
+.btest-content label.option {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
   border-radius: 8px;
-  color: #1a6b3b;
+  cursor: pointer;
+  background: transparent;
+  transition: background-color 140ms ease, box-shadow 140ms ease;
+}
+
+.btest-content label.option:hover {
+  background: rgba(2,119,189,0.04);
+}
+
+.btest-content input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #28a745;
+  flex: 0 0 auto;
+}
+
+/* Botón principal más visible y con suficiente contraste */
+.btest-content button[type="button"],
+.btest-content .btn-primary {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #28a745;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 180ms ease, transform 80ms ease;
+}
+
+.btest-content button[type="button"]:hover,
+.btest-content .btn-primary:hover {
+  background: #1f7f2f;
+  transform: translateY(-1px);
+}
+
+/* Mensajes de resultado / confirmación con alto contraste */
+.btest-content .resultado {
+  margin-top: 14px;
+  padding: 12px;
+  background: #e9f7ef;
+  border: 1px solid #c7efd2;
+  color: #0f6b3c;
+  border-radius: 8px;
   font-weight: 600;
   text-align: center;
 }
-/* aqui tenemos el estilo de los banner de titulo de cada pagina de servicios*/
 
-#banneraudi {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    margin: 20px 20px; /* 20px de margen a izquierda y derecha */
-    
-    
-    
+/* En móvil: más compacto y enfocado */
+@media (max-width: 480px) {
+  .btest-content {
+    padding: 1rem 0.9rem;
+    width: 96vw;
+    margin: 6vh auto;
   }
-
-  .seccion1audi {
-    display: flex; /* Esto convierte el contenedor (.Services) en un contenedor flexible, donde los elementos hijos (las columnas) se distribuyen en línea, de izquierda a derecha. */
-    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible del área de la página. */
-    height: auto; /* La altura se ajustará automáticamente en función del contenido dentro de las columnas. */
-    gap: 10px; /* Añade un espacio de 10px entre las columnas. Esto ayuda a separar visualmente las columnas sin necesidad de márgenes. */
-    
-  }
+  .btest-content fieldset { padding: 10px; }
+  .btest-content label.option { padding: 8px; width: 48%; box-sizing: border-box; }
+}
   
-  /* Estilos para cada una de las columnas */
-  .columna1 {
-    flex: 1; /* Hace que cada columna ocupe el mismo espacio disponible dentro del contenedor. '1' significa que se distribuyen proporcionalmente de forma equitativa. */
-    padding: 30px; /* Añade espacio interno de 30px en todos los lados de cada columna, lo que hace que el contenido dentro de ellas no toque los bordes. */
-    box-sizing: border-box; /* Esto asegura que el padding y los bordes se incluyan en el cálculo del tamaño total de las columnas. Es decir, no aumentará el tamaño de la columna más allá del que se le asignó. */
-    border: 1px solid #6b6a74; /* Aplica un borde de 1px de color rojo (#cc3838) alrededor de cada columna. */
-    border-radius: 8px; /* Redondea las esquinas del borde de la columna para dar un efecto de suavizado. */
-    background-color: #f5f5f0; /* Establece el color de fondo de las columnas. En este caso, un tono de verde claro (#99e9d1). */
-    overflow: hidden;
-  }
-  
-  /* Estilos para los encabezados dentro de las columnas */
-  .columna1 h3 {
-    margin-top: 20px; /* Elimina cualquier espacio extra encima del título <h3>. Esto es útil si no quieres que haya un margen por defecto. */
-    color: #333; /* Establece el color del texto del encabezado en un tono oscuro (#333), lo que hace que sea más legible. */
-    
-  }
-  
-  /* Estilos para los párrafos dentro de las columnas */
-  .columna1 p {
-    color: #666; /* El color del texto del párrafo es gris oscuro (#666), para que sea menos intenso que el título. */
-    font-size: 14px; /* Establece el tamaño de la fuente en 14px para los párrafos, lo que hace que el texto sea legible pero no tan grande como el título. */
-    
-  }
-
-  .columna1 ul {
-  padding-left: 20px;
-  margin-top: 20px;
-}
-
-.columna1 li {
-  color: #444;
-  font-size: 14px;
-  margin-bottom: 6px;
-  margin-top: 20px;
-}
-.columna1 video {
-  width: 100%;
-  height: 300px;
-  object-fit:none;
-  object-position: 40% 35%;
-  border-radius: 8px;
-  display:block;
-  padding: 0%;
-  
-}
-
-.oferta-destacada {
-  font-weight: bold;
-  color: #e0a800 !important; /* tono amarillo mostaza */
-  margin-top: 50px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-
-.icono {
-  font-size: 1.2rem;
-  line-height: 1;
-
-}
-
-  a {
-    text-decoration: none;
-  }
-  .columna1 a {
-    text-decoration: none;
-  }
-
-
   /*estilo del footer para todas las paginas*/
   footer {
     background-color: #333; /* Fondo oscuro */
@@ -858,7 +918,7 @@ section, .Services, .seccioncontent, .columna { word-wrap:break-word; }
 @media (max-width: 480px) {
   /* Cabecera: hamburguesa visible, menú oculto */
   .nav-toggle { display:inline-flex; align-items:center; justify-content:center; }
-  .menu { position: absolute; top: 100%; right: 1rem; background: #fff; border-radius:8px; box-shadow: 0 8px 20px rgba(0,0,0,0.12); display:none; width: calc(100% - 2rem); max-width: 320px; }
+  .menu { position: absolute; top: 100%; right: 1rem; background: #fff; border-radius:8px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); display:none; width: calc(100% - 2rem); max-width: 320px; }
   .menu.open { display:block; padding: .75rem; }
   .menu ul { flex-direction:column; gap:.5rem; }
   .cabecera { padding: .6rem; }
@@ -911,57 +971,65 @@ section, .Services, .seccioncontent, .columna { word-wrap:break-word; }
   section { padding-left: 0.9rem; padding-right: 0.9rem; }
 }
 
-/* Mejorar alineación y apariencia de radios en el test UX */
-.btest-content fieldset,
-.btest-content fieldset .options {
-  display: block;
-  margin-bottom: 12px;
+/* --- Evitar que formularios/modales queden debajo del header sticky --- */
+:root {
+  --header-height: 64px; /* valor por defecto; JS lo actualizará */
 }
 
-/* Pregunta (label) */
-.btest-content label.question {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #333;
+/* Asegura que los anclajes y scrollIntoView respeten el header */
+html { scroll-padding-top: var(--header-height); }
+
+/* Modales: se muestran centrados pero respetando la altura del header */
+.bform,
+.btest {
+  display: none;
+  position: fixed;
+  inset: 0;                 /* top/right/bottom/left: 0 */
+  z-index: 1200;
+  background: rgba(0,0,0,0.45);
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;            /* empieza debajo del header */
+  justify-content: center;
+  padding-top: calc(var(--header-height) + 12px); /* evita quedar bajo el header */
+  overflow: auto;                     /* permite scroll si contenido alto */
 }
 
-/* Si envuelves cada opción en <label class="option"> */
-.btest-content label.option {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-right: 18px;
-  cursor: pointer;
-  font-size: 15px;
-  color: #333;
+/* Contenido del modal: max-height para que quepa en pantalla y scroll interno */
+.bform-content,
+.btest-content {
+  width: min(96vw, 760px);
+  max-height: calc(100vh - var(--header-height) - 48px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+  margin-bottom: 24px; /* separación inferior en móviles */
 }
 
-/* Radios: tamaño, alineación y foco visible */
-.btest-content input[type="radio"] {
-  width: 18px;
-  height: 18px;
-  margin: 0;                 /* control total con gap en .option */
-  vertical-align: middle;
-  accent-color: #28a745;     /* color moderno para navegadores compatibles */
+/* Formularios en página: evitar que el header los cubra al hacer scroll */
+main, body {
+  box-sizing: border-box;
 }
 
-/* Si NO cambias el HTML y mantienes inputs sueltos, esta regla ayuda */
-.btest-content input[type="radio"] + span,
-.btest-content input[type="radio"] + label {
-  vertical-align: middle;
+/* Si tienes botones que abren formularios en página, usa scroll-padding-top */
+section, .seccioncontent, .columna {
+  box-sizing: border-box;
 }
 
-/* Espaciado más compacto entre opciones (si no quieres tanto gap) */
-.btest-content .options { gap: 10px; }
-
-/* Foco claro en keyboard */
-.btest-content input[type="radio"]:focus {
-  outline: 3px solid rgba(0,76,140,0.15);
-  outline-offset: 2px;
+/* Inputs y botones del formulario: siempre legibles y 100% ancho */
+.bform-content input,
+.bform-content textarea,
+.btest-content input,
+.btest-content textarea,
+#ux-test input[type="email"],
+#ux-test input[type="radio"] {
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Asegura consistencia en móviles */
-@media (max-width: 480px) {
-  .btest-content label.option { display: inline-flex; flex-basis: 48%; margin-bottom: 8px; }
-}
+/* Evitar que el menú sticky se solape: aseguramos z-index superior al modal si necesario */
+/* (si prefieres que modales estén por encima, sube z-index de .bform/.btest) */
+.cabecera { z-index: 1300; }
+
+/* Pequeño ajuste: si el menú móvil se abre como panel, evita que lo tape el modal */
+#main-nav.menu { z-index: 1400; }
