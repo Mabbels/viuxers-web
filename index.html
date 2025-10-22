@@ -15,7 +15,13 @@
     <header class="cabecera">
         <img src="logo_02.png" alt="Logotipo de Viuxer MKT">
         <h1>Viuxers Marketing UX</h1>
-        <nav class="menu">
+
+        <!-- botón hamburguesa (visible en tamaños pequeños) -->
+        <button id="nav-toggle" class="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menú">
+          <span class="hamburger"></span>
+        </button>
+
+        <nav id="main-nav" class="menu" role="navigation">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="news.html">News</a></li>
@@ -33,18 +39,21 @@
         </section>
 
 <!--modal ventana emergente formulario del banner-->
-<div id="bformulario" class="bform">
-    <div class="bform-content">
-        <span class="cerrar" onclick="document.getElementById('miFormulario').style.display='none'">&times;</span>
-        <h3>En que podemos ayudarte?</h3>
-        <form>
-            <input type="text" placeholder="Tu nombre o empresa"><br><br>
-            <input type="email" placeholder="Tu correo electronico" required><br><br> 
-            <input type="text" placeholder="Describe brevemente tu problema" required><br><br>
-            <button type="submit">Enviar</button>  
-          </form>
-        </div>
-        </div>
+<div id="bformulario" class="bform" aria-hidden="true" role="dialog" aria-labelledby="ayuda-titulo">
+  <div class="bform-content" role="document">
+    <button class="cerrar" aria-label="Cerrar">&times;</button>
+    <h3 id="ayuda-titulo">En qué podemos ayudarte?</h3>
+    <form id="form-ayuda" name="form-ayuda" novalidate>
+      <input type="text" name="nombre" placeholder="Tu nombre o empresa" required>
+      <input type="email" name="email" placeholder="Tu correo electrónico" required>
+      <textarea name="mensaje" placeholder="Describe brevemente tu problema" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+
+    <!-- zona de mensaje accesible -->
+    <div id="confirm-ayuda" class="bform-confirm" role="status" aria-live="polite" style="display:none"></div>
+  </div>
+</div>
         <section class="Services">
             <a href="Auditorías UX & Marketing.html" class="columna">
                 <h3>Auditorías UX & Marketing </h3>

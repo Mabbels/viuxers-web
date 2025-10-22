@@ -13,44 +13,14 @@ body {
   
 /* cabecera*/
 .cabecera {
-display: flex;
-align-items: center;
-justify-content: flex-start;
-padding: 10px 20px;
-background-color: #f5f5f0; /* Establece el color de fondo de las columnas. En este caso, un tono de verde claro (#99e9d1). */
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
 }
-  
-.cabecera img {
-    width: 90px;
-    height: auto;
-    margin-right: 20px;
-}
-.cabecera h1 {
-    font-size: 24px;
-    color: #333;
-
-}
-
-.cabecera img {
-  border-radius: 8px; /* Esquinas redondeadas */
-  height: 80px;       /* Opcional: ajusta altura del logo */
-  width: auto;        /* Mantiene proporción */
-}
-
-
-
-/*Explicación:
-
-display: flex; activa el sistema Flexbox, lo que permite alinear los elementos dentro del contenedor (en este caso, <header>).
-
-align-items: center; asegura que todos los elementos (logo y menú) estén centrados verticalmente.
-
-justify-content: space-between; distribuye los elementos a los extremos opuestos de la cabecera (logo a la izquierda, menú a la derecha).
-
-padding: 10px 20px; le da un poco de espacio dentro del header, entre el borde y los elementos.
-
-background-color: #fff; da un fondo blanco a la cabecera.*/
+.cabecera img { height: 64px; width: auto; }
+.cabecera h1 { font-size: clamp(1rem, 2.8vw, 1.5rem); margin: 0; color: var(--text); }
 
 /* menu de navegacion*/
 .menu {
@@ -763,61 +733,202 @@ input, textarea {
   background: #555;
 }
 
+/* Accessibility & responsive UI tweaks */
+:root{
+  /* tipografías escalables */
+  font-size: clamp(14px, 1.6vw, 18px);
+  --brand-green: #207233; /* más oscuro para mejor contraste */
+  --brand-green-hover: #1a5e2b;
+  --focus-color: #004c8c;
+}
+
+/* ---------- ROOT / BASE RESPONSIVE ---------- */
+:root{
+  --brand-green: #28a745;
+  --brand-green-dark: #218838;
+  --text: #222;
+  --muted: #666;
+  --container-gap: 1.5rem;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-size: clamp(14px, 1.6vw, 18px);
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after { box-sizing: inherit; }
+
+/* Layout responsive general */
+main { max-width: 1200px; margin: 0 auto; padding: 1.25rem; }
+
+/* Cabecera: flex y versión móvil (hamburguesa) */
+.cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+}
+.cabecera img { height: 64px; width: auto; }
+.cabecera h1 { font-size: clamp(1rem, 2.8vw, 1.5rem); margin: 0; color: var(--text); }
+
+/* menú */
+.menu ul { display:flex; gap:1.25rem; list-style:none; margin:0; padding:0; align-items:center; }
+.menu a { text-decoration:none; color:var(--text); padding:8px 6px; display:inline-block; }
+
+/* hamburguesa (oculta en escritorio) */
+.nav-toggle { display:none; background:none;border:0;padding:8px; cursor:pointer; }
+.nav-toggle .hamburger { display:block; width:22px; height:2px; background:#333; position:relative; }
+.nav-toggle .hamburger::before,
+.nav-toggle .hamburger::after {
+  content:""; position:absolute; left:0; width:22px; height:2px; background:#333; transition:transform .2s;
+}
+.nav-toggle .hamburger::before { top:-6px; }
+.nav-toggle .hamburger::after { top:6px; }
+
+/* Servicios: grid flexible */
+.Services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+/* columnas (tarjeta) */
+.columna, .columna1, .seccioncontent, .seccioncontenthead {
+  background: #f5f5f0;
+  border-radius: 10px;
+  padding: 1.25rem;
+  border: 1px solid #6b6a74;
+  overflow: hidden;
+}
+
+/* Vídeos e iframes responsivos */
+video, iframe, img { max-width: 100%; height: auto; display:block; border-radius:8px; }
+
+/* Test UX: campo y botones fluidos */
+#ux-test fieldset { border: none; padding: 0; margin: 0 0 1rem 0; }
+#ux-test label { display:block; margin-bottom:.35rem; font-weight:600; color:var(--text); }
+#ux-test .options { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; }
+#ux-test input[type="radio"] { width:18px; height:18px; accent-color:var(--brand-green); margin-right:.5rem; }
+
+/* Formularios / modales */
+.bform-content, .btest-content {
+  width: min(96vw, 760px);
+  margin: 4vh auto;
+  padding: 1.25rem;
+  border-radius: 10px;
+  background:#fff;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+.bform, .btest { display:none; position:fixed; inset:0; background: rgba(0,0,0,0.5); z-index:1000; }
+
+/* Inputs y botones */
+input[type="text"], input[type="email"], textarea { width:100%; padding:.7rem .9rem; border-radius:8px; border:1px solid #ccc; margin-bottom:.6rem; font-size:1rem; }
+button, .btn { min-height:44px; padding:.6rem .9rem; border-radius:8px; cursor:pointer; font-weight:600; background:var(--brand-green); color:#fff; border:0; }
+button:hover, .btn:hover { background:var(--brand-green-dark); }
+
+/* Focus visible */
+button:focus, a:focus, input:focus, textarea:focus { outline: 3px solid rgba(33, 136, 204, 0.15); outline-offset:3px; }
+
+/* Prevent overflow on small screens */
+section, .Services, .seccioncontent, .columna { word-wrap:break-word; }
+
+/* ---------- MEDIA QUERIES ---------- */
+
+/* Tablet horizontal ~ 1024px */
+@media (max-width: 1024px) {
+  main { padding: 1rem; }
+  .cabecera img { height:58px; }
+  .Services { gap:.9rem; grid-auto-rows: auto; }
+  .seccioncontent { padding: 1rem; }
+}
+
+/* Tablet vertical ~ 768px */
 @media (max-width: 768px) {
-  .cabecera {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-  }
-  .cabecera img {
-    margin-bottom: 10px;
-    margin-right: 0;
-    height: 60px;
-  }
-  .menu ul {
-    flex-direction: column;
-    gap: 10px;
-    padding: 0;
-  }
-  section,
-  .columna,
-  .columna1,
-  .seccioncontenthead,
-  .seccioncontent {
-    padding: 12px;
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-  .Services,
-  .seccion1audi {
-    flex-direction: column;
-    gap: 0;
-  }
-  .bform-content,
-  .btest-content {
-    padding: 16px;
-    max-width: 98vw;
-  }
-  .news-grid,
-  .projects-grid,
-  .contact-info {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem;
-  }
-  .contact-form {
-    padding: 1rem;
-  }
-  .project-card,
-  .news-card,
-  .contact-card {
-    margin-bottom: 1rem;
-  }
-  h1, h2, h3 {
-    font-size: 1.2rem;
-  }
-  .menu li a {
-    font-size: 16px;
-    padding: 8px 10px;
-  }
+  .cabecera { align-items:center; }
+  .cabecera h1 { font-size:1.05rem; }
+  .menu ul { gap:.85rem; }
+  .Services { grid-template-columns: repeat(2, 1fr); }
+  .bform-content, .btest-content { width: min(92vw, 640px); padding: 1rem; }
+}
+
+/* Móvil ~ 480px y menores */
+@media (max-width: 480px) {
+  /* Cabecera: hamburguesa visible, menú oculto */
+  .nav-toggle { display:inline-flex; align-items:center; justify-content:center; }
+  .menu { position: absolute; top: 100%; right: 1rem; background: #fff; border-radius:8px; box-shadow: 0 8px 20px rgba(0,0,0,0.12); display:none; width: calc(100% - 2rem); max-width: 320px; }
+  .menu.open { display:block; padding: .75rem; }
+  .menu ul { flex-direction:column; gap:.5rem; }
+  .cabecera { padding: .6rem; }
+
+  /* Servicios a 1 columna */
+  .Services { grid-template-columns: 1fr; gap:.75rem; }
+  .columna, .seccioncontent { padding:.9rem; margin:0; }
+
+  /* Test UX: radio options stacked */
+  #ux-test .options { flex-direction:column; gap:.4rem; }
+  #ux-test input[type="radio"] { transform:scale(1.05); }
+
+  /* Modales ocupan casi toda la pantalla */
+  .bform-content, .btest-content { width: 96vw; margin: 6vh auto; padding: .9rem; }
+
+  /* Ajustes tipográficos */
+  :root { font-size: clamp(13px, 3.6vw, 16px); }
+}
+
+/* Mejorar alineación y apariencia de radios en el test UX */
+.btest-content fieldset,
+.btest-content fieldset .options {
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* Pregunta (label) */
+.btest-content label.question {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Si envuelves cada opción en <label class="option"> */
+.btest-content label.option {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 18px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Radios: tamaño, alineación y foco visible */
+.btest-content input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;                 /* control total con gap en .option */
+  vertical-align: middle;
+  accent-color: #28a745;     /* color moderno para navegadores compatibles */
+}
+
+/* Si NO cambias el HTML y mantienes inputs sueltos, esta regla ayuda */
+.btest-content input[type="radio"] + span,
+.btest-content input[type="radio"] + label {
+  vertical-align: middle;
+}
+
+/* Espaciado más compacto entre opciones (si no quieres tanto gap) */
+.btest-content .options { gap: 10px; }
+
+/* Foco claro en keyboard */
+.btest-content input[type="radio"]:focus {
+  outline: 3px solid rgba(0,76,140,0.15);
+  outline-offset: 2px;
+}
+
+/* Asegura consistencia en móviles */
+@media (max-width: 480px) {
+  .btest-content label.option { display: inline-flex; flex-basis: 48%; margin-bottom: 8px; }
 }

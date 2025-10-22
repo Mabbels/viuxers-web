@@ -140,5 +140,66 @@ document.getElementById('btn-reiniciar-test').onclick = function() {
   form.scrollIntoView({ behavior: "smooth" });
 };
 
+// Envío accesible del formulario de ayuda
+const formAyuda = document.getElementById('form-ayuda');
+const confirmAyuda = document.getElementById('confirm-ayuda');
 
-  
+if (formAyuda) {
+  formAyuda.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // validación simple
+    const nombre = formAyuda.nombre.value.trim();
+    const email = formAyuda.email.value.trim();
+    const mensaje = formAyuda.mensaje.value.trim();
+    if (!nombre || !email || !mensaje) {
+      // mostrar error visible y enfocar primer campo vacío
+      confirmAyuda.style.display = 'block';
+      confirmAyuda.className = 'bform-confirm';
+      confirmAyuda.textContent = 'Por favor completa todos los campos.';
+      confirmAyuda.focus?.();
+      if (!nombre) formAyuda.nombre.focus();
+      else if (!email) formAyuda.email.focus();
+      else formAyuda.mensaje.focus();
+      return;
+    }
+
+    // aquí puedes enviar vía EmailJS o fetch a tu servidor
+    // ejemplo con EmailJS (descomenta y rellena ids)
+    /*
+    emailjs.sendForm('TU_SERVICE_ID','TU_TEMPLATE_ID', formAyuda)
+      .then(() => { ... })
+      .catch(() => { ... });
+    */
+
+    // si no hay envío externo, mostramos confirmación:
+    formAyuda.style.display = 'none';
+    confirmAyuda.style.display = 'block';
+    confirmAyuda.className = 'bform-confirm';
+    confirmAyuda.textContent = '¡Gracias! Nos pondremos en contacto contigo lo antes posible.';
+    confirmAyuda.setAttribute('tabindex','-1');
+    confirmAyuda.focus();
+
+    // aria-hidden toggles para el modal
+    const modal = document.getElementById('bformulario');
+    if (modal) modal.setAttribute('aria-hidden','true');
+  });
+}
+
+// Toggle menú hamburguesa (movil)
+(function(){
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('main-nav');
+  if (!toggle || !nav) return;
+  toggle.addEventListener('click', function(){
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  // cerrar menú al hacer click en un enlace
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+})();
+
+
