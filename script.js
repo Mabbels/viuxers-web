@@ -265,4 +265,87 @@ if (formAyuda) {
   }
 })();
 
+// Asegura que los modales estén ocultos al cargar y solo se abran al hacer click en su botón
+document.addEventListener('DOMContentLoaded', function () {
+  const modals = document.querySelectorAll('.bform, .btest');
+  modals.forEach(m => {
+    m.style.display = 'none';
+    m.setAttribute('aria-hidden', 'true');
+  });
+
+  const openers = [
+    { btn: 'btnaqui', modal: 'bformulario' },
+    { btn: 'btntest', modal: 'btest-ux' }
+  ];
+
+  openers.forEach(item => {
+    const btn = document.getElementById(item.btn);
+    const modal = document.getElementById(item.modal);
+    if (!btn || !modal) return;
+
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      // mostrar modal (usar flex para centrar según CSS)
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      // enfocar primer control
+      const first = modal.querySelector('input, textarea, button, a');
+      if (first) first.focus();
+    });
+
+    // cerrar al pulsar la X dentro del modal
+    modal.querySelectorAll('.cerrar').forEach(x => x.addEventListener('click', () => {
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+    }));
+
+    // cerrar al hacer click fuera del contenido (backdrop)
+    modal.addEventListener('click', function (ev) {
+      if (ev.target === modal) {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    });
+  });
+
+  // cerrar cualquier modal con Escape
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape') {
+      document.querySelectorAll('.bform, .btest').forEach(m => {
+        if (m.style.display !== 'none') {
+          m.style.display = 'none';
+          m.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+  });
+});
+
+// Render Instagram feed from your proxy endpoint
+(async function renderInstagram() {
+  const container = document.getElementById('insta-feed');
+  const note = document.getElementById('insta-note');
+  if (!container) return;
+
+  try {
+    const resp = await fetch('http://localhost:3001/instagram/latest?limit=6'); // cambia al URL de tu servidor en producción
+    if (!resp.ok) throw new Error('Fetch error');
+    const items = await resp.json();
+    if (!items || items.length === 0) {
+      note.style.display = 'block';
+      return;
+    }
+
+    container.innerHTML = items.map(item => `
+      <a class="insta-item" href="${item.permalink}" target="_blank" rel="noopener noreferrer">
+        <img loading="lazy" src="${item.url}" alt="${(item.caption || '').slice(0, 80)}">
+        <span class="insta-meta">${new Date(item.timestamp).toLocaleDateString()}</span>
+      </a>
+    `).join('');
+  } catch (err) {
+    console.warn('Instagram load error', err);
+    note.style.display = 'block';
+  }
+})();
+
 

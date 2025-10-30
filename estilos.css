@@ -1033,3 +1033,44 @@ section, .seccioncontent, .columna {
 
 /* Pequeño ajuste: si el menú móvil se abre como panel, evita que lo tape el modal */
 #main-nav.menu { z-index: 1400; }
+
+/* Estilos para Instagram feed */
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  align-items: stretch;
+}
+.insta-item {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f6f6f6;
+}
+.insta-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .25s ease;
+}
+.insta-item:hover img { transform: scale(1.03); }
+.insta-item .insta-meta {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: .8rem;
+}
+
+/* Breakpoints */
+@media (max-width: 768px) {
+  .insta-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .insta-grid { grid-template-columns: 1fr; }
+}
