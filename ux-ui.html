@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>UX/UI — Viuxer MKT</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="brand">
+      <a href="index.html" class="brand-logo" aria-label="Viuxer logo">
+        <img id="header-logo" src="Logo menu.png" alt="Logotipo Viuxer">
+      </a>
+      <h1 class="brand-title">Viuxers Marketing UX</h1>
+    </div>
+
+    <button id="nav-toggle" class="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menú">
+      <span class="hamburger"></span>
+    </button>
+
+    <nav id="main-nav" class="menu" role="navigation" aria-label="Principal">
+      <ul>
+        <li><a href="index.html#home">HOME</a></li>
+        <li><a href="ux-ui.html">UX/UI</a></li>
+        <li><a href="index.html#desarrollo">DESARROLLO</a></li>
+        <li><a href="index.html#productos-online">PRODUCTOS ONLINE</a></li>
+        <li><a href="index.html#proyectos">PROYECTOS</a></li>
+        <li><a href="index.html#news">NEWS</a></li>
+        <li class="nav-cta">
+          <a href="#" class="btn-cta" data-open="#bformulario">Solicitar Auditoria</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero-uxui" aria-labelledby="hero-uxui-title">
+    <div class="hero-uxui-bg" aria-hidden="true">
+      <span class="bubble bubble-1"></span>
+      <span class="bubble bubble-2"></span>
+    </div>
+    <div class="container hero-uxui-inner">
+      <h1 id="hero-uxui-title">Servicios de UX/UI de clase mundial</h1>
+      <p class="lead">
+        Transformamos ideas en experiencias digitales excepcionales que conectan con tus usuarios y potencian tu negocio.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-hero" data-open="#bformulario" aria-haspopup="dialog">
+          Solicitar consulta gratuita
+          <span class="arrow">›</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="uxui-user-research">
+    <div class="container">
+      <div class="ur-grid">
+        <div class="ur-left">
+          <div class="ur-icon">
+            <img src="img/icono-usuarios.png" alt="Icono investigación de usuarios">
+          </div>
+          <figure class="ur-media">
+            <img src="img/investigacion-usuarios.jpg" alt="Imagen de investigación de usuarios">
+          </figure>
+        </div>
+
+        <div class="ur-right">
+          <h2 id="uxui-user-research-title" class="ur-title">Investigación de usuarios</h2>
+          <p class="ur-text">
+            Entendemos a tu audiencia a través de entrevistas, encuestas y pruebas de usabilidad para crear experiencias centradas en el usuario.
+          </p>
+          <p class="ur-text">
+            Nuestro proceso de investigación incluye mapas de empatía, user personas, customer journeys y análisis de comportamiento
+            para entender profundamente las necesidades de tus usuarios.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="uxui-user-research-invert">
+    <div class="container">
+      <div class="ur-grid ur-grid-invert">
+        <!-- Columna izquierda: título + texto -->
+        <div class="ur-right">
+          <h2 id="uxui-user-research-invert-title" class="ur-title">Arquitectura de información</h2>
+          <p class="ur-text">
+            Organizamos contenidos y flujos para que las personas encuentren lo que necesitan de forma rápida y clara.
+          </p>
+          <p class="ur-text">
+            Estructuras navegables, taxonomías y jerarquías efectivas que mejoran la comprensión y reducen la fricción.
+          </p>
+        </div>
+
+        <!-- Columna derecha: icono + espacio para imagen -->
+        <div class="ur-left">
+          <div class="ur-icon">
+            <img src="img/icono-arquitectura.png" alt="Icono arquitectura de información">
+          </div>
+          <figure class="ur-media">
+            <img src="img/arquitectura-info.jpg" alt="Imagen arquitectura de información">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main></main>
+
+  <footer class="site-footer" role="contentinfo" aria-label="Footer">
+    <div class="footer-inner container">
+      <div class="footer-col brand-col">
+        <a href="index.html" class="footer-logo" aria-label="Viuxers">
+          <img id="footer-logo" src="Logo menu.png" alt="Viuxers logo">
+        </a>
+        <p>Diseñamos experiencias que venden. La agencia que une diseño, tecnología y automatización.</p>
+        <a class="btn-outline" href="#" data-open="#bformulario">Contáctanos</a>
+      </div>
+
+      <div class="footer-col links-col" aria-labelledby="footer-links">
+        <h4 id="footer-links">Enlaces</h4>
+        <ul>
+          <li><a href="index.html#home">HOME</a></li>
+          <li><a href="ux-ui.html">UX/UI</a></li>
+          <li><a href="index.html#desarrollo">DESARROLLO</a></li>
+          <li><a href="index.html#productos-online">PRODUCTOS ONLINE</a></li>
+          <li><a href="index.html#proyectos">PROYECTOS</a></li>
+          <li><a href="index.html#news">NEWS</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col services-col" aria-labelledby="footer-services">
+        <h4 id="footer-services">Servicios</h4>
+        <div class="services-list">
+          <strong>UX + Marketing</strong>
+          <ul>
+            <li>Investigación usuarios</li>
+            <li>Diseño UX/UI</li>
+            <li>Branding / Contenido</li>
+          </ul>
+          <strong>Desarrollo web</strong>
+          <ul>
+            <li>Web y apps</li>
+            <li>Automatización</li>
+            <li>Seguridad & BPO</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-col contact-col" aria-labelledby="footer-contacto">
+        <h4 id="footer-contacto">Contacto</h4>
+        <ul class="contact-list">
+          <li>📍 Sevilla, España</li>
+          <li>✉️ <a href="mailto:marketingux@viuxers.com">marketingux@viuxers.com</a></li>
+          <li>📞 <a href="tel:+34685116300">+34 685 116 300</a></li>
+        </ul>
+        <div class="socials" aria-hidden="true">
+          <a href="#" class="social">FB</a>
+          <a href="#" class="social">TW</a>
+          <a href="#" class="social">IG</a>
+          <a href="#" class="social">YT</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <small>&copy; 2025 Viuxers. Todos los derechos reservados.</small>
+      <nav class="footer-legal" aria-label="Avisos legales">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+        <a href="#">Cookies</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

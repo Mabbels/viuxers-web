@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viuxer MKT</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header class="cabecera">
+      <div class="brand">
+        <a href="index.html" class="brand-logo" aria-label="Viuxer logo">
+          <img id="header-logo" src="Logo menu.png" alt="Logotipo Viuxer">
+        </a>
+        <h1 class="brand-title">Viuxers Marketing UX</h1>
+      </div>
+
+      <button id="nav-toggle" class="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menú">
+        <span class="hamburger"></span>
+      </button>
+
+      <nav id="main-nav" class="menu" role="navigation" aria-label="Principal">
+        <ul>
+          <li><a href="#home">HOME</a></li>
+          <li><a href="ux-ui.html">UX/UI</a></li>
+          <li><a href="#">DESARROLLO</a></li>
+          <li><a href="#productos-online">PRODUCTOS ONLINE</a></li>
+          <li><a href="#proyectos">PROYECTOS</a></li>
+          <li><a href="#news">NEWS</a></li>
+          <li class="nav-cta">
+            <a href="#" class="btn-cta" data-open="#bformulario">Solicitar Auditoria</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero section -->
+      <section id="home" class="hero-fullwidth" aria-labelledby="hero-title">
+        <div class="hero-inner container">
+          <h1 id="hero-title">Diseñamos experiencias que venden.</h1>
+          <p class="lead">La agencia que une diseño, tecnología y automatización.</p>
+          <button id="hero-cta" class="btn-primary" aria-haspopup="dialog" data-open="#bformulario">Descubre cómo mejorar tu conversión</button>
+        </div>
+      </section>
+
+      <!-- Servicios UX/Marketing -->
+      <section id="servicios-marketing" class="services-section" aria-labelledby="marketing-services-title">
+        <div class="container">
+          <h2 id="marketing-services-title">Servicios de UX y Marketing</h2>
+          <div class="services-grid" role="list">
+            <article class="service-card" role="listitem">
+              <div class="icon" aria-hidden="true">
+                <img src="logo investigacion.png" alt="Investigación de usuarios" class="service-icon" loading="lazy">
+              </div>
+              <h3>Investigación de usuarios</h3>
+              <p>Recopilamos insights cualitativos y cuantitativos para diseñar experiencias centradas en el usuario.</p>
+              <a class="btn" href="investigacion.html" title="Ver más – Investigación de usuarios">Ver más</a>
+            </article>
+
+            <article class="service-card" role="listitem">
+              <div class="icon" aria-hidden="true">
+                <img src="logo diseño.png" alt="Diseño UX/UI" class="service-icon" loading="lazy">
+              </div>
+              <h3>Diseño UX/UI</h3>
+              <p>Diseñamos interfaces intuitivas y atractivas que mejoran la interacción y la conversión.</p>
+              <a class="btn" href="ux-ui.html" title="Ver más – Diseño UX/UI">Ver más</a>
+            </article>
+
+            <article class="service-card" role="listitem">
+              <div class="icon" aria-hidden="true">
+                <img src="logo branding.png" alt="Branding y diseño visual" class="service-icon" loading="lazy">
+              </div>
+              <h3>Branding y diseño visual</h3>
+              <p>Creamos identidades visuales coherentes que refuerzan el reconocimiento y la percepción de marca.</p>
+              <a class="btn" href="branding.html" title="Ver más – Branding">Ver más</a>
+            </article>
+
+            <article class="service-card" role="listitem">
+              <div class="icon" aria-hidden="true">
+                <img src="logo estrategia.png" alt="Estrategia de contenido" class="service-icon" loading="lazy">
+              </div>
+              <h3>Estrategia de contenido</h3>
+              <p>Planificamos y producimos contenido relevante para conectar con tu audiencia en cada punto de contacto.</p>
+              <a class="btn" href="contenido.html" title="Ver más – Estrategia de contenido">Ver más</a>
+            </article>
+
+            <article class="service-card" role="listitem">
+              <div class="icon" aria-hidden="true">
+                <img src="logo campañas.png" alt="Campañas de marketing digital" class="service-icon" loading="lazy">
+              </div>
+              <h3>Campañas de marketing digital</h3>
+              <p>Gestionamos campañas multicanal orientadas a adquisición, fidelización y crecimiento de clientes.</p>
+              <a class="btn" href="campanas.html" title="Ver más – Campañas">Ver más</a>
+            </article>
+
+            <article class="service-card" role="listitem">
+              <div class="icon" aria-hidden="true">
+                <img src="logo analitica.png" alt="Analítica y optimización" class="service-icon" loading="lazy">
+              </div>
+              <h3>Analítica y optimización</h3>
+              <p>Medimos el desempeño y optimizamos continuamente para maximizar el retorno de inversión.</p>
+              <a class="btn" href="analitica.html" title="Ver más – Analítica">Ver más</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Servicios de Desarrollo -->
+      <section id="servicios" class="services-section" aria-labelledby="services-title">
+        <div class="container">
+          <h2 id="services-title">Servicios de Desarrollo</h2>
+          <div class="services-grid" role="list">
+            <article class="service-card" role="listitem">
+              <div class="icon" aria-hidden="true">
+                <img src="Logo_Desarrollo.png" alt="Icono Desarrollo" class="service-icon" loading="lazy">
+              </div>
+              <h3>Desarrollo web y apps</h3>
+              <p>Creación de sitios web, aplicaciones web y apps móviles con enfoque UX y rendimiento.</p>
+              <a class="btn" href="desarrollo.html" title="Ver más – Desarrollo">Ver más</a>
+            </article>
+
+            <article class="service-card" role="listitem">
+              <div class="icon" aria-hidden="true">
+                <img src="logo automatización de processos.png" alt="Icono Automatización de procesos" class="service-icon" loading="lazy">
+              </div>
+              <h3>Automatización de procesos</h3>
+              <p>Implementación de flujos automáticos que reducen tareas manuales y aumentan eficiencia.</p>
+              <a class="btn" href="automatizacion.html" title="Ver más – Automatización">Ver más</a>
+            </article>
+
+            <article class="service-card" role="listitem">
+              <div class="icon" aria-hidden="true">
+                <img src="logo seguridad.png" alt="Icono Seguridad" class="service-icon" loading="lazy">
+              </div>
+              <h3>Seguridad</h3>
+              <p>Integración de seguridad digital, protección de datos y auditorías para prevenir fraudes.</p>
+              <a class="btn" href="seguridad.html" title="Ver más – Seguridad">Ver más</a>
+            </article>
+
+            <article class="service-card" role="listitem">
+              <div class="icon" aria-hidden="true">
+                <img src="logo externalización.png" alt="Icono BPO" class="service-icon" loading="lazy">
+              </div>
+              <h3>Externalizar procesos (BPO)</h3>
+              <p>Gestión operativa y soporte externo para que tu negocio pueda escalar.</p>
+              <a class="btn" href="bpo.html" title="Ver más – BPO">Ver más</a>
+            </article>
+
+            <article class="service-card" role="listitem">
+              <div class="icon" aria-hidden="true">
+                <img src="logo e-commerce.png" alt="Icono E-commerce" class="service-icon" loading="lazy">
+              </div>
+              <h3>E-commerce</h3>
+              <p>Diseño y optimización de tiendas online con UX orientada a conversión.</p>
+              <a class="btn" href="ecommerce.html" title="Ver más – E-commerce">Ver más</a>
+            </article>
+
+            <article class="service-card" role="listitem">
+              <div class="icon" aria-hidden="true">
+                <img src="Logo marketing digital.png" alt="Icono Marketing digital" class="service-icon" loading="lazy">
+              </div>
+              <h3>Marketing digital</h3>
+              <p>Estrategias de marketing digital para aumentar visibilidad y atraer clientes.</p>
+              <a class="btn" href="marketing.html" title="Ver más – Marketing">Ver más</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Modal: formulario "¿En qué podemos ayudarte?" -->
+    <div id="bformulario" class="bform" aria-hidden="true">
+      <div class="bform-content" role="dialog" aria-modal="true" aria-labelledby="form-ayuda-title">
+        <button class="cerrar" aria-label="Cerrar" data-close>×</button>
+        <div class="modal-body">
+          <h2 id="form-ayuda-title">¿En qué podemos ayudarte?</h2>
+          <p class="muted">Déjanos tus datos y un breve resumen de tu proyecto. Te contactamos en menos de 24h.</p>
+          <form id="form-ayuda">
+            <div class="grid-form">
+              <label>Nombre<input type="text" name="nombre" required /></label>
+              <label>Empresa / web<input type="text" name="empresa" /></label>
+              <label>Email<input type="email" name="email" required /></label>
+              <label>Teléfono<input type="tel" name="telefono" /></label>
+            </div>
+            <label>Mensaje<textarea name="mensaje" rows="5" required></textarea></label>
+            <div class="modal-actions">
+              <button type="button" class="btn-secondary" data-close>Cancelar</button>
+              <button type="submit" class="btn-primary">Enviar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer" role="contentinfo" aria-label="Footer">
+      <div class="footer-inner container">
+        <div class="footer-col brand-col">
+          <a href="index.html" class="footer-logo" aria-label="Viuxers">
+            <img id="footer-logo" src="Logo menu.png" alt="Viuxers logo">
+          </a>
+          <p>Diseñamos experiencias que venden. La agencia que une diseño, tecnología y automatización.</p>
+          <a class="btn-outline" href="#" title="Solicitar auditoría" data-open="#bformulario">Contáctanos</a>
+        </div>
+
+        <div class="footer-col links-col" aria-labelledby="footer-links">
+          <h4 id="footer-links">Enlaces</h4>
+          <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#">UX/UI</a></li>
+            <li><a href="#">DESARROLLO</a></li>
+            <li><a href="#productos-online">PRODUCTOS ONLINE</a></li>
+            <li><a href="#proyectos">PROYECTOS</a></li>
+            <li><a href="#news">NEWS</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col services-col" aria-labelledby="footer-services">
+          <h4 id="footer-services">Servicios</h4>
+          <div class="services-list">
+            <strong>UX + Marketing</strong>
+            <ul>
+              <li>Investigación de usuarios</li>
+              <li>Diseño UX/UI</li>
+              <li>Branding / Contenido</li>
+            </ul>
+            <strong>Desarrollo web</strong>
+            <ul>
+              <li>Desarrollo web y apps</li>
+              <li>Automatización</li>
+              <li>Seguridad & BPO</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-col contact-col" aria-labelledby="footer-contacto">
+          <h4 id="footer-contacto">Contacto</h4>
+          <ul class="contact-list">
+            <li>📍 Sevilla, España</li>
+            <li>✉️ <a href="mailto:marketingux@viuxers.com">marketingux@viuxers.com</a></li>
+            <li>📞 <a href="tel:+34685116300">+34 685 116 300</a></li>
+          </ul>
+          <div class="socials" aria-hidden="true">
+            <a href="#" class="social">FB</a>
+            <a href="#" class="social">TW</a>
+            <a href="#" class="social">IG</a>
+            <a href="#" class="social">YT</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom container">
+        <small>&copy; 2025 Viuxers. Todos los derechos reservados.</small>
+        <nav class="footer-legal" aria-label="Avisos legales">
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Cookies</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- Scripts en el orden correcto -->
+    <script src="test-ux.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
