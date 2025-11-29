@@ -321,6 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', () => {
   const navHome = document.getElementById('nav-home');
   if (navHome) {
@@ -333,6 +334,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+=======
+>>>>>>> a67a6ac5ffae3363d44c37a72ca7ace2d7d5823e
 // Render Instagram feed from your proxy endpoint
 (async function renderInstagram() {
   const container = document.getElementById('insta-feed');
