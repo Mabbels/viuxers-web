@@ -265,3 +265,202 @@
     <script src="script.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viuxer MKT</title>
+    <link rel="stylesheet" href="estilos.css">
+    
+</head>
+<script src="test-ux.js"></script>
+
+
+
+<body>
+    <header class="cabecera">
+  <div class="brand">
+    <img src="logo_02.png" alt="Logotipo de Viuxer MKT">
+    <h1>Viuxers Marketing UX</h1>
+  </div>
+
+  <!-- botón hamburguesa (visible en tamaños pequeños) -->
+  <button id="nav-toggle" class="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menú">
+    <span class="hamburger"></span>
+  </button>
+
+  <nav id="main-nav" class="menu" role="navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="proyectos.html">Proyectos</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+</header> 
+
+    <main>
+        <section id="banner">
+        <p>“Mejoramos tu marketing digital con estrategias UX que convierten más clientes”</p>
+        <p>Solicita una auditoría UX gratuita o Descubre cómo mejorar tu web</p>
+        <button id="btnaqui">Aquí</button>
+        </section>
+
+<!--modal ventana emergente formulario del banner-->
+<div id="bformulario" class="bform" aria-hidden="true" role="dialog" aria-labelledby="ayuda-titulo">
+  <div class="bform-content" role="document">
+    <button class="cerrar" aria-label="Cerrar">&times;</button>
+    <h3 id="ayuda-titulo">En qué podemos ayudarte?</h3>
+    <form id="form-ayuda" name="form-ayuda" novalidate>
+      <input type="text" name="nombre" placeholder="Tu nombre o empresa" required>
+      <input type="email" name="email" placeholder="Tu correo electrónico" required>
+      <textarea name="mensaje" placeholder="Describe brevemente tu problema" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+
+    <!-- zona de mensaje accesible -->
+    <div id="confirm-ayuda" class="bform-confirm" role="status" aria-live="polite" style="display:none"></div>
+  </div>
+</div>
+        <section class="Services">
+            <a href="Auditorías UX & Marketing.html" class="columna">
+                <h3>Auditorías UX & Marketing </h3>
+                <p>→ Detectamos problemas que frenan tu crecimiento online</p>
+                <video width="100%" autoplay loop muted>
+                    <source src="video-colum4.mp4" type="video/mp4">
+                </video>
+            </a>
+            
+                <a href="Optimización de Conversión.html" class="columna">
+                <h3>Optimización de Conversión</h3>
+                <p>→ Aumenta tus ventas con una experiencia de usuario mejorada</p>
+                <video width="100%" autoplay loop muted>
+                    <source src="video-colum-1.mp4" type="video/mp4">
+                </video>
+            </a>
+            
+            <a href="Marketing basado en Ux.html" class="columna">
+                <h3>Marketing basado en UX </h3>
+                <p>→ Haz que tu web y anuncios sean más efectivos</p>
+                <video width="100%" autoplay loop muted>
+                    <source src="video-colum2.mp4" type="video/mp4">
+                </video>
+            </a>
+            <a href="Estrategias en Redes Sociales + UX.html" class="columna">
+                <h3>Redes Sociales + UX </h3>
+                <p>→ Optimiza la experiencia en Instagram, LinkedIn y TikTok</p>
+                <video width="100%" autoplay loop muted>
+                    <source src="video-colum3.mp4" type="video/mp4">
+                </video>
+            </a>
+            
+
+        </section>
+<!-- aqui vamos ha poner el bloque para que nos lleve a un test ux emergente-->
+<section id="test-ux">
+    <h3>🧠 Test UX Interactivo</h3>
+    <p>“Descubre si tu web está optimizada”</p>
+    <p>Haz el text para una primera valoración y recibelo en pdf!</p>
+    <button id="btntest">Test-Ux</button>
+    </section>
+<!--modal ventana emergente formulario del banner-->
+<div id="btest-ux" class="btest">
+<div class="btest-content">
+    <span class="cerrar">&times;</span>
+    
+    <form id="ux-test" name="ux-test">
+          
+            <!-- BLOQUE 1: RENDIMIENTO -->
+            <fieldset>
+              <legend>⚡ Rendimiento y velocidad</legend>
+              <label>¿Tu web carga en menos de 3 segundos?</label><br>
+              <input type="radio" name="p1" value="1"> Sí
+              <input type="radio" name="p1" value="0"> No<br><br>
+      
+              <label>¿Usas imágenes optimizadas (WebP, compresión)?</label><br>
+              <input type="radio" name="p2" value="1"> Sí
+              <input type="radio" name="p2" value="0"> No<br><br>
+      
+              <label>¿Tienes carga diferida de imágenes (lazy loading)?</label><br>
+              <input type="radio" name="p3" value="1"> Sí
+              <input type="radio" name="p3" value="0"> No<br><br>
+            </fieldset>
+      
+            <!-- BLOQUE 2: DISEÑO -->
+            <fieldset>
+              <legend>🎨 Diseño y usabilidad</legend>
+              <label>¿El diseño es coherente y profesional?</label><br>
+              <input type="radio" name="p4" value="1"> Sí
+              <input type="radio" name="p4" value="0"> No<br><br>
+      
+              <label>¿Se usa una tipografía legible y buen contraste?</label><br>
+              <input type="radio" name="p5" value="1"> Sí
+              <input type="radio" name="p5" value="0"> No<br><br>
+      
+              <label>¿Los botones se ven y se entienden claramente?</label><br>
+              <input type="radio" name="p6" value="1"> Sí
+              <input type="radio" name="p6" value="0"> No<br><br>
+            </fieldset>
+      
+            <!-- BLOQUE 3: MÓVILES -->
+            <fieldset>
+              <legend>📱 Experiencia móvil</legend>
+              <label>¿Tu web se adapta bien a móviles?</label><br>
+              <input type="radio" name="p7" value="1"> Sí
+              <input type="radio" name="p7" value="0"> No<br><br>
+      
+              <label>¿Los elementos se ven bien en pantallas pequeñas?</label><br>
+              <input type="radio" name="p8" value="1"> Sí
+              <input type="radio" name="p8" value="0"> No<br><br>
+      
+              <label>¿La navegación es sencilla desde móvil?</label><br>
+              <input type="radio" name="p9" value="1"> Sí
+              <input type="radio" name="p9" value="0"> No<br><br>
+            </fieldset>
+      
+            <!-- CORREO -->
+            <fieldset>
+              <label>📧 ¿A qué correo te enviamos el resultado?</label><br>
+              <input type="email" id="email-usuario" placeholder="tucorreo@email.com" required><br><br>
+                           <!-- Dentro del formulario UX -->
+            <button type="button" id="btn-enviar-test" onclick="calcularResultado()">Ver mi resultado!</button>
+            <button type="button" id="btn-reiniciar-test" style="display:none;">Hacer el test de nuevo!</button>
+             
+            </fieldset>
+          </form>
+      
+          <div id="resultado-test" style="display: none; margin-top: 20px;"></div>
+        </div>
+      </div>
+ <!-- Bloque Instagram -->
+  <section class="seccioncontent">
+    <h3>📸 Últimas publicaciones en Instagram</h3>
+    <p>Contenido fresco directamente desde nuestro perfil. Síguenos para más ideas y consejos de UX & Marketing.</p>
+
+    <!-- Widget Instagram (LightWidget) -->
+    <div class="instagram-feed">
+      <!-- Sustituye el src por el tuyo de LightWidget -->
+      <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+      <iframe src="//lightwidget.com/widgets/3c842fdbbf1a51d493191c264faa234a.html" 
+              scrolling="no" 
+              allowtransparency="true" 
+              class="lightwidget-widget" 
+              style="width:100%;border:0;overflow:hidden;">
+      </iframe>
+    </div>
+  </section>
+  <!-- Dentro de la sección "Últimas publicaciones" -->
+<section id="ultimas-instagram">
+  <h3>Últimas publicaciones en Instagram</h3>
+  <div id="insta-feed" class="insta-grid" aria-live="polite"></div>
+  <p class="insta-note" style="display:none;" id="insta-note">No se pudieron cargar las publicaciones.</p>
+</section>
+
+        
+    <footer>
+        <p>&copy; 2025 Viuxer. Todos los derechos reservados.</p>
+      </footer>
+      <script src="script.js"></script>
+</body>
+</html>
