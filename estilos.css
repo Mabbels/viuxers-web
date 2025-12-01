@@ -487,13 +487,35 @@ html {
   overflow-anchor: none;
 }
 
-/* Asegurar sin márgenes por defecto y sin shift por scrollbar */
+/* Asegurar que el body empiece desde arriba */
 html, body {
   margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
-/* Si el header es sticky/fixed, NO añadas padding-top al body automáticamente.
-   El modal se posicionará bajo el header con top: var(--header-height). */
+/* Si el header es sticky/fixed, añade padding-top al body */
+body {
+  padding-top: 0; /* ajusta según altura real del header si es fixed */
+}
+
+/* Header: si es fixed/sticky, asegura que no empuje el contenido */
+.cabecera {
+  position: relative; /* cambia a relative si estaba en sticky/fixed */
+  /* si debe ser sticky: */
+  /* position: sticky; top: 0; z-index: 100; */
+}
+
+/* Hero: asegura que empiece desde arriba sin margen superior */
+.hero-fullwidth {
+  margin-top: 0;
+  padding-top: 80px; /* ajusta según altura del header */
+}
+
+/* Evitar que anclas internas causen scroll automático */
+html {
+  scroll-padding-top: 80px; /* altura del header si es sticky/fixed */
+}
 
 /* Hero UX/UI (celeste igual a Home) */
 .hero-uxui {
