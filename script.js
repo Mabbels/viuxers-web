@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Forzar scroll al inicio al cargar
+  window.scrollTo(0, 0);
+
   const toggle = document.getElementById('nav-toggle');
   const nav = document.getElementById('main-nav');
   
@@ -24,31 +27,31 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.remove('menu-lock');
   }
 
-  // Toggle al hacer clic en el botón hamburguesa
+  // Toggle menú
   toggle?.addEventListener('click', () => {
     const isOpen = nav.classList.contains('open');
     isOpen ? closeMenu() : openMenu();
   });
 
-  // Cerrar al hacer clic en el backdrop
+  // Cerrar al hacer clic en backdrop
   backdrop.addEventListener('click', closeMenu);
 
-  // Cerrar al hacer clic en un enlace del menú
-  nav.addEventListener('click', (e) => {
+  // Cerrar al hacer clic en enlaces
+  nav?.addEventListener('click', (e) => {
     const link = e.target.closest('a');
     if (link && !link.hasAttribute('data-open')) {
       closeMenu();
     }
   });
 
-  // Cerrar con tecla ESC
+  // Cerrar con ESC
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && nav.classList.contains('open')) {
       closeMenu();
     }
   });
 
-  // Gestión del modal de formulario
+  // Modal de formulario
   const modal = document.getElementById('bformulario');
   const btnsCta = document.querySelectorAll('[data-open="#bformulario"]');
   const btnsClose = modal?.querySelectorAll('[data-close], .cerrar');
@@ -59,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
       modal?.setAttribute('aria-hidden', 'false');
       modal?.style.setProperty('display', 'flex');
       document.body.classList.add('menu-lock');
-      closeMenu(); // Cerrar menú si está abierto
+      closeMenu();
     });
   });
 
@@ -71,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Cerrar modal al hacer clic fuera
   modal?.addEventListener('click', (e) => {
     if (e.target === modal) {
       modal.setAttribute('aria-hidden', 'true');
