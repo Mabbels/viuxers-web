@@ -814,27 +814,33 @@ html {
     flex-direction: column;
     gap: 0;
     align-items: stretch;
+    padding: 0;
+    margin: 0;
   }
 
   .menu li {
     border-bottom: 1px solid rgba(0,0,0,0.06);
+    list-style: none;
+    display: block; /* Asegurar que todos los li se muestren */
   }
 
   .menu a {
     display: block;
     padding: 1rem 1.5rem;
     font-size: 1rem;
+    text-decoration: none;
   }
 
   .nav-cta {
     border-bottom: none;
-    margin: 1rem 1.5rem;
+    margin: 1rem 1.5rem 0;
   }
 
-  .btn-cta {
+  .nav-cta .btn-cta {
     display: block;
     text-align: center;
     padding: 0.85rem 1.5rem;
+    width: 100%;
   }
 
   /* Backdrop oscuro */
