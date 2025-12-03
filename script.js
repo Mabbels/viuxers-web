@@ -44,41 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Cerrar con ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && nav.classList.contains('open')) {
-      closeMenu();
-    }
-  });
-
-  // Modal de formulario
-  const modal = document.getElementById('bformulario');
-  const btnsCta = document.querySelectorAll('[data-open="#bformulario"]');
-  const btnsClose = modal?.querySelectorAll('[data-close], .cerrar');
-
-  btnsCta.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      modal?.setAttribute('aria-hidden', 'false');
-      modal?.style.setProperty('display', 'flex');
-      document.body.classList.add('menu-lock');
-      closeMenu();
+    // Cerrar con ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        closeMenu();
+      }
     });
   });
 
-  btnsClose?.forEach(btn => {
-    btn.addEventListener('click', () => {
-      modal?.setAttribute('aria-hidden', 'true');
-      modal?.style.setProperty('display', 'none');
-      document.body.classList.remove('menu-lock');
-    });
-  });
-
-  modal?.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.setAttribute('aria-hidden', 'true');
-      modal.style.setProperty('display', 'none');
-      document.body.classList.remove('menu-lock');
-    }
-  });
-});
+ 
