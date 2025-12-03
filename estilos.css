@@ -5199,4 +5199,12 @@ body.modal-open {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index
+  z-index: 1200;
+  background: var(--overlay);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: calc(var(--header-height,64px) + 4px);
+}
