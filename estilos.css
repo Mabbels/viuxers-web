@@ -623,312 +623,404 @@ a { color: var(--brand-accent); }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .auditoria-card {
-    max-height: 95vh;
+  .brand {
+    margin-left: 0 !important;
   }
 
-  .auditoria-titulo {
-    font-size: 1.5rem;
-    padding: 1.5rem 1.5rem 1rem;
+  .brand-logo img,
+  #header-logo {
+    height: 50px;
+    max-width: 180px;
   }
 
-  .auditoria-tabs {
-    padding: 0 1.5rem;
-    overflow-x: auto;
+  .cabecera {
+    padding: 0.75rem 1rem;
   }
 
-  .auditoria-tab {
-    padding: 0.65rem 1rem;
-    font-size: 0.9rem;
-    white-space: nowrap;
+  .nav-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    position: relative;
   }
 
-  .auditoria-panels {
+  .hamburger {
+    position: relative;
+    width: 24px;
+    height: 2px;
+    background: var(--text-main);
+    border-radius: 2px;
+    transition: background 0.3s ease;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: var(--text-main);
+    border-radius: 2px;
+    transition: transform 0.3s ease, top 0.3s ease, bottom 0.3s ease;
+  }
+
+  .hamburger::before { top: -7px; }
+  .hamburger::after { bottom: -7px; }
+
+  .nav-toggle[aria-expanded="true"] .hamburger {
+    background: transparent;
+  }
+
+  .nav-toggle[aria-expanded="true"] .hamburger::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .nav-toggle[aria-expanded="true"] .hamburger::after {
+    bottom: 0;
+    transform: rotate(-45deg);
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 280px;
+    max-width: 85vw;
+    background: #fff;
+    box-shadow: -4px 0 24px rgba(0,0,0,0.15);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    padding: 80px 0 20px;
+    overflow-y: auto;
+  }
+
+  .menu.open {
+    transform: translateX(0);
+  }
+
+  .menu ul {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    align-items: stretch !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+    width: 100% !important;
+  }
+
+  .menu li {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    width: 100% !important;
+    border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+    list-style: none !important;
+  }
+
+  .menu a {
+    display: block !important;
+    padding: 1rem 1.5rem !important;
+    font-size: 1rem !important;
+    text-decoration: none !important;
+    color: var(--text-main) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 100% !important;
+  }
+
+  .menu li.nav-cta {
+    border-bottom: none !important;
+    margin: 1rem 1.5rem 0 !important;
+  }
+
+  .menu .btn-cta {
+    display: block !important;
+    text-align: center !important;
+    padding: 0.85rem 1.5rem !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .menu-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+  }
+
+  .menu-backdrop.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  body.menu-lock {
+    overflow: hidden;
+  }
+
+  /* Hero responsive */
+  .hero-fullwidth {
+    min-height: 50vh;
+    padding: 2.5rem 0;
+  }
+
+  .hero-fullwidth h1 {
+    font-size: clamp(1.5rem, 7vw, 2.2rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-fullwidth .lead {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .btn-hero {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* Hero UX/UI responsive */
+  .hero-uxui {
+    padding: 3rem 0;
+  }
+
+  .hero-uxui h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .hero-uxui .lead {
+    font-size: 1rem;
+  }
+
+  /* Secciones responsive */
+  section {
+    padding: 3rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: clamp(1.15rem, 4vw, 1.5rem);
+  }
+
+  /* Tarjetas responsive */
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .card {
     padding: 1.5rem;
   }
 
-  .auditoria-row {
-    grid-template-columns: 1fr;
+  /* Footer responsive */
+  .site-footer {
+    padding: 2.5rem 0 1.5rem;
   }
 
-  .auditoria-btn-next,
-  .auditoria-btn-submit {
-    width: 100%;
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .footer-legal {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  /* FORMULARIO AUDITORÍA RESPONSIVE */
+  .auditoria-overlay {
+    padding: 0.5rem;
+  }
+
+  .auditoria-card {
+    max-width: 100%;
+    max-height: 95vh;
+    border-width: 2px;
+  }
+
+  .auditoria-titulo {
+    font-size: 1.25rem;
+    padding: 1.25rem 1.25rem 0.75rem;
   }
 
   .auditoria-close {
     top: 1rem;
     right: 1rem;
-  }
-}
-
-/* Evitar que el navegador "ancle" automáticamente el scroll */
-html {
-  scroll-behavior: auto;
-  overflow-anchor: none;
-}
-
-/* Asegurar que el body empiece desde arriba */
-html, body {
-  margin: 0;
-  padding: 0;
-  scroll-behavior: smooth;
-}
-
-/* Si el header es sticky/fixed, añade padding-top al body */
-body {
-  padding-top: 0; /* ajusta según altura real del header si es fixed */
-}
-
-/* Header: si es fixed/sticky, asegura que no empuje el contenido */
-.cabecera {
-  position: relative; /* cambia a relative si estaba en sticky/fixed */
-  /* si debe ser sticky: */
-  /* position: sticky; top: 0; z-index: 100; */
-}
-
-/* Hero: asegura que empiece desde arriba sin margen superior */
-.hero-fullwidth {
-  margin-top: 0;
-  padding-top: 80px; /* ajusta según altura del header */
-}
-
-/* Evitar que anclas internas causen scroll automático */
-html {
-  scroll-padding-top: 80px; /* altura del header si es sticky/fixed */
-}
-
-/* Banner hero UX/UI (IGUAL al de la Home) */
-.hero-uxui {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  min-height: 50vh;                    /* igual que .hero-fullwidth */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #cfeeee;           /* MISMO color que la Home */
-  padding: clamp(2rem, 6vh, 5.5rem) 0; /* MISMO padding */
-}
-
-.hero-uxui-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.hero-uxui .bubble {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 30% 30%,
-    rgba(255, 255, 255, 0.15),
-    rgba(255, 255, 255, 0.05) 60%,
-    rgba(255, 255, 255, 0) 100%
-  );
-   filter: blur(40px);
-}
-
-.hero-uxui .bubble-1 {
-  width: 400px;
-  height: 400px;
-  left: -100px;
-  top: -100px;
-}
-
-.hero-uxui .bubble-2 {
-  width: 500px;
-  height: 500px;
-  right: -150px;
-  bottom: -150px;
-}
-
-.hero-uxui-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;                   /* igual que .hero-inner */
-  margin: 0 auto;
-  text-align: center;
-  padding: 0 1.25rem;
-}
-
-.hero-uxui h1 {
-  color: #17222b;                      /* igual que .hero-fullwidth h1 */
-  font-weight: 800;
-  font-size: clamp(1.4rem, 4vw, 3.2rem); /* MISMO tamaño */
-  margin: 0 0 0.9rem;
-  line-height: 1.03;
-}
-
-.hero-uxui .lead {
-  color: #66727d;                      /* igual que .hero-fullwidth .lead */
-  font-size: clamp(0.95rem, 1.9vw, 1.1rem); /* MISMO tamaño */
-  margin: 0 0 1.4rem;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.btn-hero {
-  background: var(--brand-dark);       /* mismo botón que .btn-primary */
-  color: #fff;
-  padding: clamp(0.65rem, 0.9rem, 1.05rem) clamp(1.4rem, 3.2vw, 3.25rem);
-  border-radius: 12px;
-  border: 0;
-  font-size: clamp(0.9rem, 1.4vw, 1rem);
-  cursor: pointer;
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.06);
-  transition: transform 0.12s ease, box-shadow 0.12s;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.btn-hero:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.08);
-}
-
-.btn-hero .arrow {
-  font-size: 1.2rem;
-  transition: transform 0.2s ease;
-}
-
-.btn-hero:hover .arrow {
-  transform: translateX(4px);
-}
-
-/* Responsive (igual que .hero-fullwidth) */
-@media (max-width: 480px) {
-  .hero-uxui {
-    min-height: 45vh;
-    padding: 2.25rem 0;
+    font-size: 1.75rem;
+    width: 36px;
+    height: 36px;
   }
 
-  .hero-uxui h1 {
-    font-size: clamp(1.2rem, 6.5vw, 2.4rem);
-    margin-bottom: 0.6rem;
+  .auditoria-tabs {
+    padding: 0 1.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
 
-  .hero-uxui .lead {
-    font-size: 0.95rem;
+  .auditoria-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .auditoria-tab {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .auditoria-panels {
+    padding: 1.25rem;
+  }
+
+  .auditoria-subtitulo {
+    font-size: 1rem;
     margin-bottom: 1rem;
   }
 
-  .btn-hero {
-    width: 88%;
-    padding: 0.72rem 0.85rem;
-    font-size: 0.98rem;
-    border-radius: 10px;
-    justify-content: center;
+  .auditoria-formulario {
+    gap: 0.85rem;
   }
 
-  .hero-uxui .bubble-1 {
-    width: 250px;
-    height: 250px;
+  .auditoria-row {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
   }
 
-  .hero-uxui .bubble-2 {
-    width: 300px;
-    height: 300px;
+  .auditoria-field label {
+    font-size: 0.85rem;
   }
-}
 
-/* =====================================================
-   FORMULARIO DE AUDITORÍA (NUEVO - NO TOCAR)
-   ===================================================== */
-
-.auditoria-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(5px);
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  overflow-y: auto;
-}
-
-.auditoria-overlay[aria-hidden="false"] {
-  display: flex !important;
-}
-
-.auditoria-card {
-  position: relative;
-  background: #fff;
-  border: 3px solid #17222b;
-  border-radius: 16px;
-  max-width: 800px;  /* Reducido de 900px a 800px */
-  width: 100%;
-  max-height: 85vh;  /* Reducido de 90vh a 85vh */
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  animation: auditoriaFadeIn 0.3s ease;
-}
-
-@keyframes auditoriaFadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95) translateY(-20px);
+  .auditoria-field input,
+  .auditoria-field textarea {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.85rem;
   }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
+
+  .auditoria-field textarea {
+    min-height: 70px;
+  }
+
+  .auditoria-btn-next,
+  .auditoria-btn-submit {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
   }
 }
 
-.auditoria-close {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  background: transparent;
-  border: none;
-  font-size: 2rem;
-  color: #666;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  transition: color 0.2s ease;
+/* Responsive para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .hero-fullwidth {
+    min-height: 45vh;
+    padding: 2rem 0;
+  }
+
+  .hero-fullwidth h1 {
+    font-size: 1.4rem;
+  }
+
+  .hero-fullwidth .lead {
+    font-size: 0.9rem;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  section {
+    padding: 2.5rem 0;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .auditoria-card {
+    max-height: 98vh;
+  }
+
+  .auditoria-titulo {
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+
+  .auditoria-tabs {
+    padding: 0 1rem;
+  }
+
+  .auditoria-tab {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .auditoria-panels {
+    padding: 1rem;
+  }
+
+  .auditoria-close {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
 }
 
-.auditoria-close:hover {
-  color: #000;
-}
+/* Responsive para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
 
-.auditoria-titulo {
-  font-size: 1.5rem;  /* Reducido de 1.75rem */
-  font-weight: 700;
-  color: #17222b;
-  margin: 0;
-  padding: 1.5rem 2rem 1rem;  /* Reducido padding */
-}
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-.auditoria-tabs {
-  display: flex;
-  gap: 0;
-  border-bottom: 2px solid #e0e0e0;
-  padding: 0 2rem;  /* Reducido de 2.5rem */
-}
+  .auditoria-card {
+    max-width: 700px;
+  }
 
-.auditoria-tab {
-  background: transparent;
-  border: none;
-  padding: 0.6rem 1.2rem;  /* Reducido de 0.75rem 1.5rem */
-  font-size: 0.95rem;  /* Reducido de 1rem */
-  font-weight: 500;
-  color: #666;
-  cursor: pointer;
-  border-bottom: 3px
+  .hero-fullwidth {
+    min-height: 55vh;
+  }
+}
