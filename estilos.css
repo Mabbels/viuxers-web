@@ -415,7 +415,7 @@ a { color: var(--brand-accent); }
 .services-section .container{ max-width:1200px; margin:0 auto; }
 
 .services-main-card {
-  background: linear-gradient(135deg, #e8f5f4 0%, #d0ebe8 100%);
+  background: #ffffff;
   border-radius: 16px;
   padding: 3rem;
   box-shadow: 0 4px 20px rgba(45, 124, 119, 0.1);
