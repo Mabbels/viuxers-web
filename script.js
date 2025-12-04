@@ -111,5 +111,55 @@ document.addEventListener('DOMContentLoaded', () => {
       auditoriaTabs[0]?.click();
     });
   });
+
+  // ====== FILTRADO DE PROYECTOS ======
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const proyectoItems = document.querySelectorAll('.proyecto-item');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remover clase active de todos los botones
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      // Añadir clase active al botón clickeado
+      button.classList.add('active');
+
+      const filter = button.getAttribute('data-filter');
+
+      proyectoItems.forEach(item => {
+        const category = item.getAttribute('data-category');
+        
+        if (filter === 'todos') {
+          // Mostrar todos
+          item.style.display = 'flex';
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'scale(1)';
+          }, 10);
+        } else if (category === filter) {
+          // Mostrar solo los que coinciden
+          item.style.display = 'flex';
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'scale(1)';
+          }, 10);
+        } else {
+          // Ocultar los que no coinciden
+          item.style.opacity = '0';
+          item.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            item.style.display = 'none';
+          }, 300);
+        }
+      });
+    });
+  });
+
+  // Inicializar estilos de transición para proyectos
+  proyectoItems.forEach(item => {
+    item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    item.style.opacity = '1';
+    item.style.transform = 'scale(1)';
+  });
 });
+
 
