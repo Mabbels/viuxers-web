@@ -1,3 +1,70 @@
+/* Modal Auditoría Técnica */
+.modal-auditoria {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.modal-auditoria[style*="display:none"] {
+  display: none !important;
+}
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 2rem 1.5rem;
+  max-width: 420px;
+  width: 100%;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.form-auditoria label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+.form-auditoria input,
+.form-auditoria select,
+.form-auditoria textarea {
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+.form-auditoria button.sdn-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #6c63ff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(108,99,255,0.12);
+  transition: background 0.2s;
+}
+.form-auditoria button.sdn-btn:hover {
+  background: #554eea;
+}
 /* Reset básico */
 *{ margin:0; padding:0; box-sizing:border-box; }
 :root{
@@ -931,4 +998,175 @@ html {
   font-weight: 500;
   color: #666;
   cursor: pointer;
-  border-bottom: 3px
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+  position: relative;
+  bottom: -2px;
+}
+
+.auditoria-tab:hover {
+  color: #1f8a5b;
+}
+
+.auditoria-tab.auditoria-tab-active {
+  color: #1f8a5b;
+  border-bottom-color: #1f8a5b;
+}
+
+.auditoria-panels {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem 2rem;  /* Reducido de 2rem 2.5rem */
+}
+
+.auditoria-panel {
+  display: none;
+  animation: auditoriaSlideIn 0.3s ease;
+}
+
+.auditoria-panel.auditoria-panel-active {
+  display: block;
+}
+
+@keyframes auditoriaSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.auditoria-subtitulo {
+  font-size: 1.1rem;  /* Reducido de 1.25rem */
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 1rem;  /* Reducido de 1.5rem */
+}
+
+.auditoria-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;  /* Reducido de 1.25rem */
+}
+
+.auditoria-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;  /* Reducido de 1rem */
+}
+
+.auditoria-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;  /* Reducido de 0.5rem */
+}
+
+.auditoria-field label {
+  font-size: 0.9rem;  /* Reducido de 0.95rem */
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.auditoria-field input,
+.auditoria-field textarea {
+  padding: 0.65rem 0.85rem;  /* Reducido de 0.75rem 1rem */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem;  /* Reducido de 0.95rem */
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auditoria-field input:focus,
+.auditoria-field textarea:focus {
+  outline: none;
+  border-color: #1f8a5b;
+  box-shadow: 0 0 0 3px rgba(31, 138, 91, 0.1);
+}
+
+.auditoria-field textarea {
+  resize: vertical;
+  min-height: 80px;  /* Reducido de 100px */
+}
+
+.auditoria-btn-next,
+.auditoria-btn-submit {
+  align-self: flex-end;
+  padding: 0.75rem 1.75rem;  /* Reducido de 0.85rem 2rem */
+  background: #17222b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;  /* Reducido de 1rem */
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 0.75rem;  /* Reducido de 1rem */
+}
+
+/* === Servicios de Desarrollo (nuevo) === */
+.servicios-desarrollo-nuevo {
+  background: #fff;
+  padding: 56px 0 64px;
+}
+.servicios-desarrollo-nuevo h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+}
+.sdn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+.sdn-card {
+  background: #f6f9f8;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(20,34,35,0.07);
+  padding: 2rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: box-shadow 0.2s;
+}
+.sdn-card:hover {
+  box-shadow: 0 6px 24px rgba(20,34,35,0.13);
+}
+.sdn-icon {
+  font-size: 2.2rem;
+  background: #e6eafc;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+.sdn-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.7rem;
+  color: var(--brand-dark);
+}
+.sdn-card p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+.sdn-btn {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  background: var(--brand-accent);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.98rem;
+  transition: background 0.2s;
+}
+.sdn-btn:hover {
+  background: #475167;
+}

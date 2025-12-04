@@ -45,7 +45,7 @@
         Construimos plataformas escalables, seguras y optimizadas para impulsar tu negocio digital.
       </p>
       <div class="hero-actions">
-        <button class="btn-hero" data-open="#bformulario" aria-haspopup="dialog">
+        <button class="btn-hero" aria-haspopup="dialog" data-open-auditoria>
           Solicitar consulta técnica
           <span class="arrow">›</span>
         </button>
@@ -55,6 +55,84 @@
 
   <main>
     <!-- Sin contenido adicional por ahora -->
+
+    <!-- Nueva sección: Servicios de Desarrollo (Figma) -->
+    <section class="servicios-desarrollo-nuevo" aria-labelledby="servi    git checkout develop_lcerrejonrrollo-nuevo-title">
+      <div class="container">
+        <div class="sdn-grid">
+          <div class="sdn-card">
+            <div class="sdn-icon"><span>🌐</span></div>
+            <h3>Desarrollo web y apps</h3>
+            <p>Creación de sitios web, aplicaciones web y apps móviles con enfoque UX y rendimiento.</p>
+            <a href="#" class="sdn-btn">Ver más</a>
+          </div>
+          <div class="sdn-card">
+            <div class="sdn-icon"><span>⚙️</span></div>
+            <h3>Automatización de procesos</h3>
+            <p>Implementación de flujos automáticos que reducen tareas manuales y aumentan eficiencia.</p>
+            <a href="#" class="sdn-btn">Ver más</a>
+          </div>
+          <div class="sdn-card">
+            <div class="sdn-icon"><span>🛡️</span></div>
+            <h3>Seguridad</h3>
+            <p>Integración de seguridad digital, protección de datos, auditorías y prevención de fraudes.</p>
+            <a href="#" class="sdn-btn">Ver más</a>
+          </div>
+          <div class="sdn-card">
+            <div class="sdn-icon"><span>👥</span></div>
+            <h3>Externalizar procesos de negocio (BPO)</h3>
+            <p>Gestión de tareas operativas y soporte externo para que el negocio pueda escalar.</p>
+            <a href="#" class="sdn-btn">Ver más</a>
+          </div>
+          <div class="sdn-card">
+            <div class="sdn-icon"><span>🛒</span></div>
+            <h3>E-commerce</h3>
+            <p>Diseño, desarrollo y optimización de tiendas online con UX orientada a conversión.</p>
+            <a href="#" class="sdn-btn">Ver más</a>
+          </div>
+          <div class="sdn-card">
+            <div class="sdn-icon"><span>📈</span></div>
+            <h3>Marketing digital</h3>
+            <p>Estrategias de marketing digital para aumentar la visibilidad y atraer clientes potenciales.</p>
+            <a href="#" class="sdn-btn">Ver más</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal Solicitar Auditoria Técnica -->
+    <div id="auditoria-modal" class="modal-auditoria" aria-modal="true" role="dialog" style="display:none;">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Cerrar" onclick="closeModalAuditoria()">×</button>
+        <h2>Solicitar Auditoría Técnica</h2>
+        <form id="form-auditoria" class="form-auditoria" action="https://formspree.io/f/xblnkgpg" method="POST">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" required>
+
+          <label for="empresa">Nombre de la empresa</label>
+          <input type="text" id="empresa" name="empresa" required>
+
+          <label for="email">Email de contacto</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="servicio">¿Qué servicio te interesa?</label>
+          <select id="servicio" name="servicio" required>
+            <option value="">Selecciona...</option>
+            <option value="web-apps">Desarrollo web y apps</option>
+            <option value="automatizacion">Automatización de procesos</option>
+            <option value="seguridad">Seguridad</option>
+            <option value="bpo">Externalizar procesos de negocio (BPO)</option>
+            <option value="ecommerce">E-commerce</option>
+            <option value="marketing">Marketing digital</option>
+          </select>
+
+          <label for="mensaje">Mensaje o consulta</label>
+          <textarea id="mensaje" name="mensaje" rows="3" placeholder="Cuéntanos brevemente tu necesidad..."></textarea>
+
+          <button type="submit" class="sdn-btn">Enviar solicitud</button>
+        </form>
+      </div>
+    </div>
   </main>
 
  
@@ -126,5 +204,19 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // Abrir modal al hacer clic en cualquier elemento con data-open-auditoria
+    document.querySelectorAll('[data-open-auditoria]').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('auditoria-modal').style.display = 'block';
+      });
+    });
+    // Cerrar modal al hacer clic en la X
+    function closeModalAuditoria() {
+      document.getElementById('auditoria-modal').style.display = 'none';
+    }
+    window.closeModalAuditoria = closeModalAuditoria;
+  </script>
 </body>
 </html>

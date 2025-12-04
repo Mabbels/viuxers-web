@@ -111,5 +111,20 @@ document.addEventListener('DOMContentLoaded', () => {
       auditoriaTabs[0]?.click();
     });
   });
+
+  // Modal Solicitar Auditoria Técnica
+  function closeModalAuditoria() {
+    document.getElementById('modal-auditoria').style.display = 'none';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.querySelector('.btn-hero[data-open="#bformulario"]');
+    if (btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('modal-auditoria').style.display = 'block';
+      });
+    }
+  });
 });
 
