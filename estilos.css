@@ -41,18 +41,167 @@ a { color: var(--brand-accent); }
 
 /* Sección UX/UI: colores y espaciado alineados */
 .uxui-user-research,
-.uxui-user-research-invert { padding: 40px 0 56px; }
+.uxui-user-research-invert { 
+  padding: 2.2rem 1rem; 
+  background: transparent; 
+}
 
-.ur-title { color: var(--brand-accent); }
-.ur-text { color: var(--text-muted); }
+/* Contenedor de las secciones con estilo card */
+.uxui-user-research .container,
+.uxui-user-research-invert .container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.75rem;
+  border: 1px solid rgba(107,106,116,0.12);
+  box-shadow: 0 6px 20px rgba(20,34,35,0.04);
+}
+
+.ur-title { 
+  color: var(--text); 
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.ur-text { 
+  color: var(--muted); 
+  line-height: 1.5;
+  font-size: 0.95rem;
+  margin-bottom: 0.9rem;
+}
+
+.ur-text:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Sección de características/features */
+.ur-features {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(107,106,116,0.12);
+}
+
+.ur-features-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 1rem;
+}
+
+.ur-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.ur-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ur-feature-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--brand-dark);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.ur-feature-text {
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .ur-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* Icono y panel visual en celeste coherente */
-.ur-icon { background: var(--brand-accent); box-shadow: 0 18px 36px rgba(102,112,255,0.25); }
-.ur-icon img { filter: brightness(0) invert(1); }
+.ur-icon { 
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(37,135,66,0.06);
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.ur-icon img { 
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  display: block;
+}
 
 /* Grids tal como ya están definidos */
 .ur-grid { display: grid; grid-template-columns: 420px 1fr; gap: 32px; align-items: start; }
 .ur-grid-invert { display: grid; grid-template-columns: 1fr 420px; gap: 32px; align-items: start; }
+
+/* Estilos para las columnas */
+.ur-left,
+.ur-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.ur-media {
+  margin: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ur-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive para secciones UX/UI */
+@media (max-width: 1024px) {
+  .ur-grid,
+  .ur-grid-invert {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .uxui-user-research .container,
+  .uxui-user-research-invert .container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .uxui-user-research,
+  .uxui-user-research-invert {
+    padding: 1rem;
+  }
+  
+  .uxui-user-research .container,
+  .uxui-user-research-invert .container {
+    padding: 1.25rem;
+  }
+  
+  .ur-title {
+    font-size: 1.15rem;
+  }
+  
+  .ur-text {
+    font-size: 0.9rem;
+  }
+}
 
 /* Container */
 .container{ max-width:1200px; margin:0 auto; padding:0 1.25rem; }
@@ -931,4 +1080,8 @@ html {
   font-weight: 500;
   color: #666;
   cursor: pointer;
-  border-bottom: 3px
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+  position: relative;
+  bottom: -2px;
+}
