@@ -102,15 +102,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Enviar TODOS los formularios (Marketing, UX, Desarrollo, Contacto)
+  // Enviar TODOS los formularios a Formspree
   auditoriaForms?.forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      alert('✅ Gracias por tu solicitud. Nos pondremos en contacto contigo lo antes posible.');
-      cerrarAuditoriaModal();
-      form.reset();
-      // Volver a la primera pestaña
-      auditoriaTabs[0]?.click();
+      
+      // Crear FormData para enviar a Formspree
+      const formData = new FormData(form);
+      
+      // Enviar a Formspree
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          alert('✅ Gracias por tu solicitud. Nos pondremos en contacto contigo lo antes posible.');
+          cerrarAuditoriaModal();
+          form.reset();
+          // Volver a la primera pestaña
+          auditoriaTabs[0]?.click();
+        } else {
+          throw new Error('Error en el envío');
+        }
+      }).catch(error => {
+        alert('❌ Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
+        console.error('Error:', error);
+      });
     });
   });
   } // Fin del bloque auditoría general
