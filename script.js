@@ -112,19 +112,84 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Modal Solicitar Auditoria Técnica
-  function closeModalAuditoria() {
-    document.getElementById('modal-auditoria').style.display = 'none';
-  }
+  // ====== FILTRADO DE PROYECTOS ======
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const proyectoItems = document.querySelectorAll('.proyecto-item');
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var btn = document.querySelector('.btn-hero[data-open="#bformulario"]');
-    if (btn) {
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.getElementById('modal-auditoria').style.display = 'block';
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remover clase active de todos los botones
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      // Añadir clase active al botón clickeado
+      button.classList.add('active');
+
+      const filter = button.getAttribute('data-filter');
+
+      proyectoItems.forEach(item => {
+        const category = item.getAttribute('data-category');
+        
+        if (filter === 'todos') {
+          // Mostrar todos
+          item.style.display = 'flex';
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'scale(1)';
+          }, 10);
+        } else if (category === filter) {
+          // Mostrar solo los que coinciden
+          item.style.display = 'flex';
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'scale(1)';
+          }, 10);
+        } else {
+          // Ocultar los que no coinciden
+          item.style.opacity = '0';
+          item.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            item.style.display = 'none';
+          }, 300);
+        }
       });
-    }
+    });
   });
+
+  // Inicializar estilos de transición para proyectos
+  proyectoItems.forEach(item => {
+    item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    item.style.opacity = '1';
+    item.style.transform = 'scale(1)';
+  });
+
+  // ====== MODAL DESARROLLO (FORMSPREE) ======
+  // Abrir modal al hacer clic en cualquier elemento con data-open-auditoria en página de desarrollo
+  if (window.location.pathname.includes('desarrollo.html')) {
+    document.querySelectorAll('[data-open-auditoria]').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        const modal = document.getElementById('auditoria-modal');
+        if (modal) {
+          modal.style.display = 'block';
+        }
+      });
+    });
+    
+    // Cerrar modal al hacer clic en la X
+    window.closeModalAuditoria = function() {
+      const modal = document.getElementById('auditoria-modal');
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    };
+
+    // Cerrar modal al hacer clic fuera del contenido
+    document.addEventListener('click', function(e) {
+      const modal = document.getElementById('auditoria-modal');
+      if (modal && e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  }
 });
+
 
