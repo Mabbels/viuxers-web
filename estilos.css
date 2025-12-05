@@ -2068,3 +2068,12 @@ html {
 .sdn-btn:hover {
   background: #165a3f;
 }
+
+/* Forzar estilos para la primera sección de desarrollo */
+.uxui-user-research:first-of-type .container {
+  background: #fff !important;
+  border-radius: 12px !important;
+  padding: 1.75rem !important;
+  border: 1px solid rgba(107,106,116,0.12) !important;
+  box-shadow: 0 6px 20px rgba(20,34,35,0.04) !important;
+}
