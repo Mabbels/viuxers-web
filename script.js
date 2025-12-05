@@ -46,22 +46,24 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ====== FORMULARIO DE AUDITORÍA (NUEVO) ======
-  const auditoriaModal = document.getElementById('auditoria-modal');
-  const auditoriaOpenBtns = document.querySelectorAll('[data-open-auditoria]');
-  const auditoriaCloseBtn = auditoriaModal?.querySelector('.auditoria-close');
-  const auditoriaTabs = auditoriaModal?.querySelectorAll('.auditoria-tab');
-  const auditoriaPanels = auditoriaModal?.querySelectorAll('.auditoria-panel');
-  const auditoriaForms = auditoriaModal?.querySelectorAll('[data-auditoria-form]');
+  // Solo ejecutar en páginas que NO sean desarrollo.html
+  if (!window.location.pathname.includes('desarrollo.html')) {
+    const auditoriaModal = document.getElementById('auditoria-modal');
+    const auditoriaOpenBtns = document.querySelectorAll('[data-open-auditoria]');
+    const auditoriaCloseBtn = auditoriaModal?.querySelector('.auditoria-close');
+    const auditoriaTabs = auditoriaModal?.querySelectorAll('.auditoria-tab');
+    const auditoriaPanels = auditoriaModal?.querySelectorAll('.auditoria-panel');
+    const auditoriaForms = auditoriaModal?.querySelectorAll('[data-auditoria-form]');
 
-  // Abrir modal
-  auditoriaOpenBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      auditoriaModal?.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('menu-lock');
-      closeMenu();
+    // Abrir modal
+    auditoriaOpenBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        auditoriaModal?.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('menu-lock');
+        closeMenu();
+      });
     });
-  });
 
   // Cerrar modal
   function cerrarAuditoriaModal() {
@@ -111,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       auditoriaTabs[0]?.click();
     });
   });
+  } // Fin del bloque auditoría general
 
   // ====== FILTRADO DE PROYECTOS ======
   const filterButtons = document.querySelectorAll('.filter-btn');
@@ -162,21 +165,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ====== MODAL DESARROLLO (FORMSPREE) ======
-  // Abrir modal al hacer clic en cualquier elemento con data-open-auditoria en página de desarrollo
+  // Solo ejecutar en página de desarrollo.html
   if (window.location.pathname.includes('desarrollo.html')) {
     document.querySelectorAll('[data-open-auditoria]').forEach(function(el) {
       el.addEventListener('click', function(e) {
         e.preventDefault();
-        const modal = document.getElementById('auditoria-modal');
+        const modal = document.getElementById('modal-formspree');
         if (modal) {
-          modal.style.display = 'block';
+          modal.style.display = 'flex'; // Usar flex para centrar
         }
       });
     });
     
     // Cerrar modal al hacer clic en la X
     window.closeModalAuditoria = function() {
-      const modal = document.getElementById('auditoria-modal');
+      const modal = document.getElementById('modal-formspree');
       if (modal) {
         modal.style.display = 'none';
       }
@@ -184,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cerrar modal al hacer clic fuera del contenido
     document.addEventListener('click', function(e) {
-      const modal = document.getElementById('auditoria-modal');
+      const modal = document.getElementById('modal-formspree');
       if (modal && e.target === modal) {
         modal.style.display = 'none';
       }
