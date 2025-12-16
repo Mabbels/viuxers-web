@@ -8,26 +8,21 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
       
+      // Redirección inmediata sin esperar respuesta para evitar notificación de Formspree
+      window.location.href = 'gracias.html';
+      
+      // Enviar formulario en segundo plano
       try {
-        const response = await fetch(form.action, {
+        fetch(form.action, {
           method: 'POST',
           body: new FormData(form),
           headers: {
             'Accept': 'application/json'
           }
         });
-        
-        // Manejar respuesta exitosa
-        if (response.ok || response.status === 302) {
-          window.location.href = 'gracias.html';
-        } else if (response.status === 302) {
-          window.location.href = 'gracias.html';
-        } else {
-          window.location.href = 'gracias.html';
-        }
       } catch (error) {
-        // En caso de error, también redirigir a gracias
-        window.location.href = 'gracias.html';
+        // Silenciar errores ya que la redirección ya ocurrió
+        console.log('Formulario enviado, redirigiendo...');
       }
     });
   });
