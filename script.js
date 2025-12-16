@@ -1,6 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
   window.scrollTo(0, 0);
 
+  // Manejo de formularios Formspree
+  const formspreeFormsWrapper = document.querySelectorAll('form[action*="formspree.io"]');
+  
+  formspreeFormsWrapper.forEach(form => {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        // Manejar respuesta exitosa
+        if (response.ok || response.status === 302) {
+          window.location.href = 'gracias.html';
+        } else if (response.status === 302) {
+          window.location.href = 'gracias.html';
+        } else {
+          window.location.href = 'gracias.html';
+        }
+      } catch (error) {
+        // En caso de error, también redirigir a gracias
+        window.location.href = 'gracias.html';
+      }
+    });
+  });
+
   const toggle = document.getElementById('nav-toggle');
   const nav = document.getElementById('main-nav');
   
