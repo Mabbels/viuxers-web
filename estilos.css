@@ -1397,6 +1397,90 @@ a { color: var(--brand-accent); }
   }
 }
 
+/* ============================================
+   SECCIÓN CLIENTES
+   ============================================ */
+.clientes-section {
+  background: #ffffff;
+  padding: 2.5rem 0;
+  border-top: 1px solid rgba(107, 106, 116, 0.12);
+}
+
+.clientes-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.clientes-section h2 {
+  font-size: 1.05rem;
+  color: #123;
+  font-weight: 700;
+  margin-bottom: 1.8rem;
+  letter-spacing: -0.2px;
+}
+
+.clientes-logos {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.cliente-logo {
+  width: 100%;
+  max-width: 140px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.cliente-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.6);
+  transition: all 0.3s ease;
+}
+
+.cliente-logo:hover img {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .clientes-logos {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .clientes-section {
+    padding: 2rem 0;
+  }
+  
+  .clientes-section h2 {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .clientes-logos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  
+  .cliente-logo {
+    max-width: 120px;
+    height: 60px;
+  }
+}
+
 /* FOOTER */
 .site-footer {
   background: var(--brand-dark);
