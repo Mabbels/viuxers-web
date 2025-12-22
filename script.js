@@ -64,7 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
   nav?.addEventListener('click', (e) => {
     const link = e.target.closest('a');
     if (link && !link.classList.contains('btn-cta') && !link.hasAttribute('data-open-auditoria')) {
-      closeMenu();
+      // Cerrar menú pero permitir navegación normal
+      setTimeout(() => closeMenu(), 100);
     }
   });
 
