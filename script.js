@@ -61,13 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   backdrop.addEventListener('click', closeMenu);
 
-  nav?.addEventListener('click', (e) => {
-    const link = e.target.closest('a');
-    if (link && !link.classList.contains('btn-cta') && !link.hasAttribute('data-open-auditoria')) {
-      // Cerrar menú pero permitir navegación normal
-      setTimeout(() => closeMenu(), 100);
-    }
-  });
+  // NAVEGACIÓN DEL MENÚ - Permitir navegación completamente normal
+  // No hacer nada especial con los clics en enlaces, dejar que el navegador maneje la navegación
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && nav?.classList.contains('open')) {
