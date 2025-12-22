@@ -1,6 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
   window.scrollTo(0, 0);
 
+  // Manejo de formularios Formspree
+  const formspreeFormsWrapper = document.querySelectorAll('form[action*="formspree.io"]');
+  
+  formspreeFormsWrapper.forEach(form => {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Redirección inmediata sin esperar respuesta para evitar notificación de Formspree
+      window.location.href = 'gracias.html';
+      
+      // Enviar formulario en segundo plano
+      try {
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+      } catch (error) {
+        // Silenciar errores ya que la redirección ya ocurrió
+        console.log('Formulario enviado, redirigiendo...');
+      }
+    });
+  });
+
   const toggle = document.getElementById('nav-toggle');
   const nav = document.getElementById('main-nav');
   
