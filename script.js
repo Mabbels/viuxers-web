@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  window.scrollTo(0, 0);
+  // Solo hacer scroll al inicio si no hay hash en la URL
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
 
   // Manejo de formularios Formspree
   const formspreeFormsWrapper = document.querySelectorAll('form[action*="formspree.io"]');
