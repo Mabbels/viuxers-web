@@ -1420,6 +1420,20 @@ a { color: var(--brand-accent); }
   letter-spacing: -0.2px;
 }
 
+.clientes-home h2 {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.clientes-home {
+  padding: 2.5rem 0;
+  background: #ffffff;
+}
+
+.clientes-home h2 {
+  margin-bottom: 1.2rem;
+}
+
 .clientes-logos {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -1443,12 +1457,12 @@ a { color: var(--brand-accent); }
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: grayscale(100%) opacity(0.6);
+  filter: none;
+  opacity: 1;
   transition: all 0.3s ease;
 }
 
 .cliente-logo:hover img {
-  filter: grayscale(0%) opacity(1);
   transform: scale(1.05);
 }
 
@@ -1478,6 +1492,170 @@ a { color: var(--brand-accent); }
   .cliente-logo {
     max-width: 120px;
     height: 60px;
+  }
+}
+
+/* ============================================
+   PÁGINA DE GRACIAS
+   ============================================ */
+.gracias-content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.gracias-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.gracias-content h1 {
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.gracias-content .lead {
+  color: rgba(255,255,255,0.95);
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.gracias-content .btn-primary {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.gracias-next-steps {
+  background: #f8f9fa;
+  padding: 4rem 0;
+}
+
+.gracias-next-steps .container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.gracias-next-steps h2 {
+  color: var(--brand-dark);
+  margin-bottom: 2rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.step-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.step-icon {
+  color: var(--brand-green);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.step-icon-accent {
+  color: var(--brand-accent);
+}
+
+.step-card h3 {
+  color: var(--brand-dark);
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.step-card p {
+  color: var(--muted);
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+
+.gracias-contact-box {
+  margin-top: 3rem;
+  padding: 2.5rem;
+  background: var(--brand-dark);
+  border-radius: 15px;
+  color: white;
+}
+
+.gracias-contact-box h3 {
+  color: white;
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.gracias-contact-box p {
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  color: var(--brand-accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+
+.contact-link:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .gracias-icon {
+    font-size: 3rem;
+  }
+
+  .gracias-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .gracias-next-steps {
+    padding: 3rem 0;
+  }
+
+  .gracias-next-steps h2 {
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .gracias-contact-box {
+    padding: 1.5rem;
+  }
+
+  .contact-links {
+    flex-direction: column;
+    gap: 1rem;
   }
 }
 

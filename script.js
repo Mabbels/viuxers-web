@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  window.scrollTo(0, 0);
+  // Solo hacer scroll al inicio si no hay hash en la URL
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
 
   // Manejo de formularios Formspree
   const formspreeFormsWrapper = document.querySelectorAll('form[action*="formspree.io"]');
@@ -58,12 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   backdrop.addEventListener('click', closeMenu);
 
-  nav?.addEventListener('click', (e) => {
-    const link = e.target.closest('a');
-    if (link && !link.classList.contains('btn-cta') && !link.hasAttribute('data-open-auditoria')) {
-      closeMenu();
-    }
-  });
+  // NAVEGACIÓN DEL MENÚ - Permitir navegación completamente normal
+  // No hacer nada especial con los clics en enlaces, dejar que el navegador maneje la navegación
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && nav?.classList.contains('open')) {
