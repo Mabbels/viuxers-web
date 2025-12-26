@@ -72,21 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ====== FORMULARIO DE AUDITORÍA (NUEVO) ======
   const auditoriaModal = document.getElementById('auditoria-modal');
-    const auditoriaOpenBtns = document.querySelectorAll('[data-open-auditoria]');
-    const auditoriaCloseBtn = auditoriaModal?.querySelector('.auditoria-close');
-    const auditoriaTabs = auditoriaModal?.querySelectorAll('.auditoria-tab');
-    const auditoriaPanels = auditoriaModal?.querySelectorAll('.auditoria-panel');
-    const auditoriaForms = auditoriaModal?.querySelectorAll('[data-auditoria-form]');
+  const auditoriaOpenBtns = document.querySelectorAll('[data-open-auditoria]');
+  const auditoriaCloseBtn = auditoriaModal?.querySelector('.auditoria-close');
+  const auditoriaTabs = auditoriaModal?.querySelectorAll('.auditoria-tab');
+  const auditoriaPanels = auditoriaModal?.querySelectorAll('.auditoria-panel');
+  const auditoriaForms = auditoriaModal?.querySelectorAll('[data-auditoria-form]');
 
-    // Abrir modal
-    auditoriaOpenBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        auditoriaModal?.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('menu-lock');
-        closeMenu();
-      });
+  // Abrir modal
+  auditoriaOpenBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      auditoriaModal?.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('menu-lock');
+      closeMenu();
     });
+  });
 
   // Cerrar modal
   function cerrarAuditoriaModal() {
