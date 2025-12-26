@@ -95,6 +95,170 @@
     </section>
   </main>
 
+  <!-- Modal de Auditoría -->
+    <div id="auditoria-modal" class="auditoria-overlay" aria-hidden="true">
+      <div class="auditoria-card">
+        <button class="auditoria-close" aria-label="Cerrar">&times;</button>
+        
+        <h2 class="auditoria-titulo">Formulario de Auditoría</h2>
+        
+        <!-- Pestañas de navegación -->
+        <nav class="auditoria-tabs" role="tablist">
+          <button class="auditoria-tab auditoria-tab-active" data-auditoria-tab="marketing" role="tab" aria-selected="true">
+            Marketing
+          </button>
+          <button class="auditoria-tab" data-auditoria-tab="ux" role="tab" aria-selected="false">
+            UX
+          </button>
+          <button class="auditoria-tab" data-auditoria-tab="desarrollo" role="tab" aria-selected="false">
+            Desarrollo
+          </button>
+          <button class="auditoria-tab" data-auditoria-tab="contacto" role="tab" aria-selected="false">
+            Contacto
+          </button>
+        </nav>
+
+        <!-- Contenedor de paneles -->
+        <div class="auditoria-panels">
+          
+          <!-- Panel Marketing -->
+          <section class="auditoria-panel auditoria-panel-active" id="panel-marketing" role="tabpanel">
+            <h3 class="auditoria-subtitulo">Información de Marketing</h3>
+            <form class="auditoria-formulario" data-auditoria-form action="https://formspree.io/f/mldqypjz" method="POST">
+              <input type="hidden" name="tipo_auditoria" value="Marketing">
+              <div class="auditoria-row">
+                <div class="auditoria-field">
+                  <label for="mkt-empresa">Nombre de la Empresa *</label>
+                  <input type="text" id="mkt-empresa" name="empresa" placeholder="Empresa S.A." required>
+                </div>
+                <div class="auditoria-field">
+                  <label for="mkt-web">Sitio Web *</label>
+                  <input type="url" id="mkt-web" name="web" placeholder="https://www.ejemplo.com" required>
+                </div>
+              </div>
+
+              <div class="auditoria-field">
+                <label for="mkt-industria">Industria</label>
+                <input type="text" id="mkt-industria" name="industria" placeholder="Ej: Tecnología, Retail, etc.">
+              </div>
+
+              <div class="auditoria-field">
+                <label for="mkt-objetivo">Objetivo que necesita cumplir *</label>
+                <textarea id="mkt-objetivo" name="objetivo" rows="4" placeholder="Describe tu audiencia objetivo (demografía, intereses, etc.)" required></textarea>
+              </div>
+
+              <button type="submit" class="auditoria-btn-submit">
+                Enviar Solicitud
+              </button>
+            </form>
+          </section>
+
+          <!-- Panel UX -->
+          <section class="auditoria-panel" id="panel-ux" role="tabpanel">
+            <h3 class="auditoria-subtitulo">Información de UX</h3>
+            <form class="auditoria-formulario" data-auditoria-form action="https://formspree.io/f/xblnkgpg" method="POST">
+              <input type="hidden" name="tipo_auditoria" value="UX">
+              <div class="auditoria-row">
+                <div class="auditoria-field">
+                  <label for="ux-empresa">Nombre de la Empresa *</label>
+                  <input type="text" id="ux-empresa" name="empresa" placeholder="Empresa S.A." required>
+                </div>
+                <div class="auditoria-field">
+                  <label for="ux-web">Sitio Web *</label>
+                  <input type="url" id="ux-web" name="web" placeholder="https://www.ejemplo.com" required>
+                </div>
+              </div>
+
+              <div class="auditoria-field">
+                <label for="ux-usuarios">Número de usuarios mensuales</label>
+                <input type="text" id="ux-usuarios" name="usuarios" placeholder="Ej: 10,000">
+              </div>
+
+              <div class="auditoria-field">
+                <label for="ux-problema">¿Qué problema de UX necesitas resolver? *</label>
+                <textarea id="ux-problema" name="problema" rows="4" placeholder="Describe los problemas de usabilidad o experiencia" required></textarea>
+              </div>
+
+              <button type="submit" class="auditoria-btn-submit">
+                Enviar Solicitud
+              </button>
+            </form>
+          </section>
+
+          <!-- Panel Desarrollo -->
+          <section class="auditoria-panel" id="panel-desarrollo" role="tabpanel">
+            <h3 class="auditoria-subtitulo">Información de Desarrollo</h3>
+            <form class="auditoria-formulario" data-auditoria-form action="https://formspree.io/f/xblnkgpg" method="POST">
+              <input type="hidden" name="tipo_auditoria" value="Desarrollo">
+              <div class="auditoria-row">
+                <div class="auditoria-field">
+                  <label for="dev-empresa">Nombre de la Empresa *</label>
+                  <input type="text" id="dev-empresa" name="empresa" placeholder="Empresa S.A." required>
+                </div>
+                <div class="auditoria-field">
+                  <label for="dev-web">Sitio Web actual</label>
+                  <input type="url" id="dev-web" name="web" placeholder="https://www.ejemplo.com">
+                </div>
+              </div>
+
+              <div class="auditoria-field">
+                <label for="dev-tecnologia">Tecnología actual (si aplica)</label>
+                <input type="text" id="dev-tecnologia" name="tecnologia" placeholder="Ej: WordPress, React, etc.">
+              </div>
+
+              <div class="auditoria-field">
+                <label for="dev-proyecto">Describe tu proyecto de desarrollo *</label>
+                <textarea id="dev-proyecto" name="proyecto" rows="4" placeholder="Describe qué necesitas desarrollar o mejorar" required></textarea>
+              </div>
+
+              <button type="submit" class="auditoria-btn-submit">
+                Enviar Solicitud
+              </button>
+            </form>
+          </section>
+
+          <!-- Panel Contacto -->
+          <section class="auditoria-panel" id="panel-contacto" role="tabpanel">
+            <h3 class="auditoria-subtitulo">Información de Contacto</h3>
+            <form class="auditoria-formulario" data-auditoria-form action="https://formspree.io/f/xblnkgpg" method="POST">
+              <input type="hidden" name="tipo_auditoria" value="Contacto">
+              <div class="auditoria-row">
+                <div class="auditoria-field">
+                  <label for="contacto-nombre">Nombre completo *</label>
+                  <input type="text" id="contacto-nombre" name="nombre" placeholder="Juan Pérez" required>
+                </div>
+                <div class="auditoria-field">
+                  <label for="contacto-cargo">Cargo</label>
+                  <input type="text" id="contacto-cargo" name="cargo" placeholder="Director de Marketing">
+                </div>
+              </div>
+
+              <div class="auditoria-row">
+                <div class="auditoria-field">
+                  <label for="contacto-email">Email *</label>
+                  <input type="email" id="contacto-email" name="email" placeholder="juan@empresa.com" required>
+                </div>
+                <div class="auditoria-field">
+                  <label for="contacto-telefono">Teléfono</label>
+                  <input type="tel" id="contacto-telefono" name="telefono" placeholder="+34 600 000 000">
+                </div>
+              </div>
+
+              <div class="auditoria-field">
+                <label for="contacto-mensaje">Mensaje adicional</label>
+                <textarea id="contacto-mensaje" name="mensaje" rows="3" placeholder="Cualquier información adicional que quieras compartir"></textarea>
+              </div>
+
+              <button type="submit" class="auditoria-btn-submit">
+                Enviar Solicitud
+              </button>
+            </form>
+          </section>
+
+        </div>
+      </div>
+    </div>
+
   <footer class="site-footer" role="contentinfo" aria-label="Footer">
       <div class="footer-inner container">
         <div class="footer-col brand-col">
