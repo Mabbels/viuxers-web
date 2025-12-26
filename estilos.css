@@ -1425,6 +1425,14 @@ a { color: var(--brand-accent); }
   padding-left: 20px;
 }
 
+.clientes-home {
+  padding: 1.5rem 0;
+}
+
+.clientes-home h2 {
+  margin-bottom: 1.2rem;
+}
+
 .clientes-logos {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
