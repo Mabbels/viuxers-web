@@ -26,25 +26,28 @@
         <li><a href="productos-online.html">PRODUCTOS ONLINE</a></li>
         <li><a href="proyectos.html">PROYECTOS</a></li>
         <li><a href="news.html">NEWS</a></li>
+        <li class="nav-cta">
+          <a href="#" class="btn-cta" data-open-auditoria>Solicitar Auditoria</a>
+        </li>
       </ul>
     </nav>
   </header>
 
   <main>
     <!-- Hero section para página de gracias -->
-    <section class="hero-uxui" style="background: linear-gradient(135deg, var(--brand-dark) 0%, #1a5f59 100%);" aria-labelledby="gracias-title">
+    <section class="hero-uxui" aria-labelledby="gracias-title">
       <div class="hero-uxui-bg" aria-hidden="true">
         <span class="bubble bubble-1"></span>
         <span class="bubble bubble-2"></span>
       </div>
-      <div class="container hero-uxui-inner" style="text-align: center; padding: 4rem 2rem;">
-        <div style="max-width: 600px; margin: 0 auto;">
-          <div style="font-size: 4rem; margin-bottom: 1.5rem;">✅</div>
-          <h1 id="gracias-title" style="color: white; margin-bottom: 1.5rem;">¡Gracias por contactarnos!</h1>
-          <p class="lead" style="color: rgba(255,255,255,0.9); font-size: 1.2rem; margin-bottom: 2rem;">
+      <div class="hero-uxui-inner container">
+        <div class="gracias-content">
+          <div class="gracias-icon">✅</div>
+          <h1 id="gracias-title">¡Gracias por contactarnos!</h1>
+          <p class="lead">
             Tu solicitud de auditoría ha sido enviada exitosamente. Nos pondremos en contacto contigo muy pronto.
           </p>
-          <a href="index.html" class="btn-primary" style="display: inline-block; margin-top: 1rem;">
+          <a href="index.html" class="btn-primary">
             Volver al inicio
           </a>
         </div>
@@ -52,39 +55,39 @@
     </section>
 
     <!-- Sección con información adicional -->
-    <section style="background: #f8f9fa; padding: 4rem 0;" aria-labelledby="que-sigue-title">
-      <div class="container" style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <h2 id="que-sigue-title" style="color: var(--brand-dark); margin-bottom: 2rem;">¿Qué sigue ahora?</h2>
+    <section class="gracias-next-steps" aria-labelledby="que-sigue-title">
+      <div class="container">
+        <h2 id="que-sigue-title">¿Qué sigue ahora?</h2>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
-          <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-            <div style="color: var(--brand-green); font-size: 2.5rem; margin-bottom: 1rem;">⏱️</div>
-            <h3 style="color: var(--brand-dark); margin-bottom: 1rem;">Respuesta rápida</h3>
-            <p style="color: #666; line-height: 1.6;">Nuestro equipo revisará tu solicitud y te contactaremos en menos de 24 horas.</p>
-          </div>
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-icon">⏱️</div>
+            <h3>Respuesta rápida</h3>
+            <p>Nuestro equipo revisará la solicitud y estableceremos contacto en menos de 24 horas.</p>
+          </article>
 
-          <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-            <div style="color: var(--brand-accent); font-size: 2.5rem; margin-bottom: 1rem;">🎯</div>
-            <h3 style="color: var(--brand-dark); margin-bottom: 1rem;">Análisis personalizado</h3>
-            <p style="color: #666; line-height: 1.6;">Realizaremos un análisis detallado de tu situación específica.</p>
-          </div>
+          <article class="step-card">
+            <div class="step-icon step-icon-accent">🎯</div>
+            <h3>Análisis personalizado</h3>
+            <p>Realizaremos un análisis detallado de la situación específica y las necesidades del proyecto.</p>
+          </article>
 
-          <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-            <div style="color: var(--brand-green); font-size: 2.5rem; margin-bottom: 1rem;">💡</div>
-            <h3 style="color: var(--brand-dark); margin-bottom: 1rem;">Propuesta sin compromiso</h3>
-            <p style="color: #666; line-height: 1.6;">Te presentaremos una propuesta personalizada adaptada a tus necesidades.</p>
-          </div>
+          <article class="step-card">
+            <div class="step-icon">💡</div>
+            <h3>Propuesta sin compromiso</h3>
+            <p>Presentaremos una propuesta personalizada adaptada a los objetivos y requerimientos específicos.</p>
+          </article>
         </div>
 
-        <div style="margin-top: 3rem; padding: 2rem; background: var(--brand-dark); border-radius: 15px; color: white;">
-          <h3 style="margin-bottom: 1rem;">¿Tienes alguna pregunta urgente?</h3>
-          <p style="margin-bottom: 1.5rem; opacity: 0.9;">No dudes en contactarnos directamente</p>
-          <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-            <a href="mailto:info@viuxers.com" style="color: var(--brand-accent); text-decoration: none; font-weight: 600;">
-              📧 info@viuxers.com
+        <div class="gracias-contact-box">
+          <h3>¿Necesitas ayuda inmediata?</h3>
+          <p>Estamos disponibles para responder cualquier consulta</p>
+          <div class="contact-links">
+            <a href="mailto:proyectos@viuxers.com" class="contact-link">
+              📧 proyectos@viuxers.com
             </a>
-            <a href="tel:+1234567890" style="color: var(--brand-accent); text-decoration: none; font-weight: 600;">
-              📞 +34 123 456 789
+            <a href="tel:+34685116300" class="contact-link">
+              📞 +34 685 116 300
             </a>
           </div>
         </div>
@@ -92,13 +95,71 @@
     </section>
   </main>
 
-  <!-- Footer simple -->
-  <footer style="background: var(--brand-dark); color: white; text-align: center; padding: 2rem;">
-    <div class="container">
-      <p>&copy; 2024 Viuxer MKT. Todos los derechos reservados.</p>
-      <p style="opacity: 0.7; margin-top: 0.5rem;">Diseñamos experiencias que venden.</p>
-    </div>
-  </footer>
+  <footer class="site-footer" role="contentinfo" aria-label="Footer">
+      <div class="footer-inner container">
+        <div class="footer-col brand-col">
+          <a href="index.html" class="footer-logo" aria-label="Viuxers">
+            <img id="footer-logo" src="Logo menu.png" alt="Viuxers logo">
+          </a>
+          <p>Diseñamos experiencias que venden. La agencia que une diseño, tecnología y automatización.</p>
+          <a class="btn-outline" href="#" title="Solicitar auditoría" data-open-auditoria>Contáctanos</a>
+        </div>
+
+        <div class="footer-col links-col" aria-labelledby="footer-links">
+          <h4 id="footer-links">Enlaces</h4>
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="ux-ui.html">UX/UI</a></li>
+            <li><a href="desarrollo.html">DESARROLLO</a></li>
+            <li><a href="productos-online.html">PRODUCTOS ONLINE</a></li>
+            <li><a href="proyectos.html">PROYECTOS</a></li>
+            <li><a href="news.html">NEWS</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col services-col" aria-labelledby="footer-services">
+          <h4 id="footer-services">Servicios</h4>
+          <div class="services-list">
+            <strong>UX + Marketing</strong>
+            <ul>
+              <li>Investigación de usuarios</li>
+              <li>Diseño UX/UI</li>
+              <li>Branding / Contenido</li>
+            </ul>
+            <strong>Desarrollo web</strong>
+            <ul>
+              <li>Desarrollo web y apps</li>
+              <li>Automatización</li>
+              <li>Seguridad & BPO</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-col contact-col" aria-labelledby="footer-contacto">
+          <h4 id="footer-contacto">Contacto</h4>
+          <ul class="contact-list">
+            <li>📍 Sevilla, España</li>
+            <li>✉️ <a href="mailto:marketingux@viuxers.com">proyectos@viuxers.com</a></li>
+            <li>📞 <a href="tel:+34685116300">+34 685 116 300</a></li>
+          </ul>
+          <div class="socials" aria-hidden="true">
+            <a href="#" class="social">FB</a>
+            <a href="#" class="social">TW</a>
+            <a href="#" class="social">IG</a>
+            <a href="#" class="social">YT</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom container">
+        <small>&copy; 2025 Viuxers. Todos los derechos reservados.</small>
+        <nav class="footer-legal" aria-label="Avisos legales">
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Cookies</a>
+        </nav>
+      </div>
+    </footer>
 
   <script src="script.js"></script>
 </body>
