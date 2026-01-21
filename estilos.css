@@ -2137,42 +2137,171 @@ a { color: var(--brand-accent); }
 
 /* Responsive */
 @media (max-width: 768px) {
+  .auditoria-overlay {
+    padding: 1rem 0.75rem;
+  }
+
   .auditoria-card {
     max-height: 95vh;
+    max-width: 95%;
+    border-width: 2px;
   }
 
   .auditoria-titulo {
-    font-size: 1.5rem;
-    padding: 1.5rem 1.5rem 1rem;
+    font-size: 1.35rem;
+    padding: 1.25rem 1.25rem 0.8rem;
   }
 
   .auditoria-tabs {
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
     overflow-x: auto;
+    gap: 0.25rem;
   }
 
   .auditoria-tab {
-    padding: 0.65rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.85rem;
     white-space: nowrap;
   }
 
   .auditoria-panels {
-    padding: 1.5rem;
+    padding: 1.25rem;
+  }
+
+  .auditoria-subtitulo {
+    font-size: 1rem;
+    margin: 0 0 0.9rem;
   }
 
   .auditoria-row {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .auditoria-field input,
+  .auditoria-field textarea {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .auditoria-field textarea {
+    min-height: 70px;
   }
 
   .auditoria-btn-next,
   .auditoria-btn-submit {
     width: 100%;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    margin-top: 0.6rem;
   }
 
   .auditoria-close {
     top: 1rem;
     right: 1rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auditoria-overlay {
+    padding: 0.75rem;
+  }
+
+  .auditoria-card {
+    max-width: 100%;
+    border-radius: 12px;
+    border-width: 2px;
+    max-height: 90vh;
+  }
+
+  .auditoria-titulo {
+    font-size: 1.1rem;
+    padding: 1rem 1rem 0.75rem;
+    margin: 0;
+  }
+
+  .auditoria-tabs {
+    padding: 0 1rem;
+    gap: 0;
+    border-bottom: 2px solid #e0e0e0;
+  }
+
+  .auditoria-tab {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .auditoria-panels {
+    padding: 1rem;
+    overflow-y: auto;
+  }
+
+  .auditoria-subtitulo {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 0.8rem;
+  }
+
+  .auditoria-formulario {
+    gap: 0.8rem;
+  }
+
+  .auditoria-row {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .auditoria-field {
+    gap: 0.35rem;
+  }
+
+  .auditoria-field label {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .auditoria-field input,
+  .auditoria-field textarea {
+    padding: 0.55rem 0.65rem;
+    border-radius: 6px;
+    font-size: 16px; /* prevenir zoom en iOS */
+  }
+
+  .auditoria-field textarea {
+    min-height: 60px;
+    resize: vertical;
+  }
+
+  .auditoria-field input:focus,
+  .auditoria-field textarea:focus {
+    box-shadow: 0 0 0 2px rgba(31, 138, 91, 0.15);
+  }
+
+  .auditoria-btn-next,
+  .auditoria-btn-submit {
+    width: 100%;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    border-radius: 6px;
+  }
+
+  .auditoria-close {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 32px;
+    height: 32px;
+    font-size: 1.6rem;
+  }
+
+  .auditoria-close:hover {
+    color: #1f8a5b;
   }
 }
 
