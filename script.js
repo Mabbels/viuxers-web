@@ -4,6 +4,169 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo(0, 0);
   }
 
+  // ====== POMPAS INTERACTIVAS EN EL HERO ======
+  const bubblesContainer = document.getElementById('bubbles-container');
+  
+  if (bubblesContainer) {
+    // Crear sonido para el pop
+    const popSound = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj==');
+    popSound.volume = 0.3;
+    
+    // Array de tamaños para las pompas
+    const bubbleSizes = [60, 80, 100, 70, 90];
+    const numBubbles = 5;
+    
+    // Crear pompas
+    for (let i = 0; i < numBubbles; i++) {
+      const size = bubbleSizes[i];
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble';
+      bubble.style.width = size + 'px';
+      bubble.style.height = size + 'px';
+      bubble.style.left = Math.random() * (100 - (size / window.innerWidth * 100)) + '%';
+      bubble.style.top = Math.random() * (100 - (size / bubblesContainer.offsetHeight * 100)) + '%';
+      
+      const bubbleInner = document.createElement('div');
+      bubbleInner.className = 'bubble-inner';
+      bubble.appendChild(bubbleInner);
+      
+      bubblesContainer.appendChild(bubble);
+      
+      // Variables para drag
+      let isDragging = false;
+      let offsetX = 0;
+      let offsetY = 0;
+      let mouseX = 0;
+      let mouseY = 0;
+      let animationId = null;
+      
+      // Hover - seguir al mouse
+      bubble.addEventListener('mouseenter', () => {
+        if (!isDragging) {
+          // Preparar para que siga al mouse
+          document.addEventListener('mousemove', followMouse);
+        }
+      });
+      
+      bubble.addEventListener('mouseleave', () => {
+        if (!isDragging) {
+          document.removeEventListener('mousemove', followMouse);
+          // Volver a posición original suavemente
+          bubble.style.transition = 'left 0.6s ease-out, top 0.6s ease-out';
+          const randomLeft = Math.random() * (100 - (size / window.innerWidth * 100));
+          const randomTop = Math.random() * (100 - (size / bubblesContainer.offsetHeight * 100));
+          bubble.style.left = randomLeft + '%';
+          bubble.style.top = randomTop + '%';
+          setTimeout(() => {
+            bubble.style.transition = 'none';
+          }, 600);
+        }
+      });
+      
+      function followMouse(e) {
+        if (isDragging) return;
+        
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        if (!animationId) {
+          animationId = requestAnimationFrame(updateBubblePosition);
+        }
+      }
+      
+      function updateBubblePosition() {
+        const bubbleRect = bubble.getBoundingClientRect();
+        const containerRect = bubblesContainer.getBoundingClientRect();
+        
+        const bubbleCenterX = bubbleRect.left + bubbleRect.width / 2;
+        const bubbleCenterY = bubbleRect.top + bubbleRect.height / 2;
+        
+        const dx = mouseX - bubbleCenterX;
+        const dy = mouseY - bubbleCenterY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance > 5) {
+          const angle = Math.atan2(dy, dx);
+          const moveDistance = Math.min(80, distance * 0.15);
+          
+          let newX = bubbleRect.left - containerRect.left + Math.cos(angle) * moveDistance;
+          let newY = bubbleRect.top - containerRect.top + Math.sin(angle) * moveDistance;
+          
+          // Limitar dentro del contenedor
+          newX = Math.max(0, Math.min(newX, bubblesContainer.offsetWidth - size));
+          newY = Math.max(0, Math.min(newY, bubblesContainer.offsetHeight - size));
+          
+          bubble.style.left = newX + 'px';
+          bubble.style.top = newY + 'px';
+          bubble.style.position = 'absolute';
+          
+          animationId = requestAnimationFrame(updateBubblePosition);
+        } else {
+          animationId = null;
+        }
+      }
+      
+      // Click - explotar
+      bubble.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        if (isDragging) return;
+        
+        // Reproducir sonido
+        popSound.currentTime = 0;
+        popSound.play().catch(() => {
+          // Ignorar si el sonido no se puede reproducir
+        });
+        
+        // Agregar clase de explosión
+        bubble.classList.add('popping');
+        
+        // Remover después de la animación
+        setTimeout(() => {
+          bubble.remove();
+        }, 400);
+        
+        document.removeEventListener('mousemove', followMouse);
+      });
+      
+      // Drag - mover por la pantalla
+      bubble.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        document.removeEventListener('mousemove', followMouse);
+        
+        const bubbleRect = bubble.getBoundingClientRect();
+        const containerRect = bubblesContainer.getBoundingClientRect();
+        
+        offsetX = e.clientX - bubbleRect.left;
+        offsetY = e.clientY - bubbleRect.top;
+        
+        function onMouseMove(e) {
+          if (!isDragging) return;
+          
+          let newX = e.clientX - containerRect.left - offsetX;
+          let newY = e.clientY - containerRect.top - offsetY;
+          
+          // Limitar dentro del contenedor
+          newX = Math.max(0, Math.min(newX, bubblesContainer.offsetWidth - size));
+          newY = Math.max(0, Math.min(newY, bubblesContainer.offsetHeight - size));
+          
+          bubble.style.left = newX + 'px';
+          bubble.style.top = newY + 'px';
+          bubble.style.position = 'absolute';
+        }
+        
+        function onMouseUp() {
+          isDragging = false;
+          document.removeEventListener('mousemove', onMouseMove);
+          document.removeEventListener('mouseup', onMouseUp);
+        }
+        
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', onMouseUp);
+      });
+    }
+  }
+
   // Manejo de formularios Formspree
   const formspreeFormsWrapper = document.querySelectorAll('form[action*="formspree.io"]');
   
