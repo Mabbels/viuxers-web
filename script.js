@@ -164,6 +164,73 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseup', onMouseUp);
       });
+      
+      // Touch - mover por la pantalla en mobile
+      bubble.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        document.removeEventListener('mousemove', followMouse);
+        
+        const touch = e.touches[0];
+        const bubbleRect = bubble.getBoundingClientRect();
+        const containerRect = bubblesContainer.getBoundingClientRect();
+        
+        offsetX = touch.clientX - bubbleRect.left;
+        offsetY = touch.clientY - bubbleRect.top;
+      });
+      
+      bubble.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        
+        e.preventDefault();
+        const touch = e.touches[0];
+        const containerRect = bubblesContainer.getBoundingClientRect();
+        
+        let newX = touch.clientX - containerRect.left - offsetX;
+        let newY = touch.clientY - containerRect.top - offsetY;
+        
+        // Limitar dentro del contenedor
+        newX = Math.max(0, Math.min(newX, bubblesContainer.offsetWidth - size));
+        newY = Math.max(0, Math.min(newY, bubblesContainer.offsetHeight - size));
+        
+        bubble.style.left = newX + 'px';
+        bubble.style.top = newY + 'px';
+        bubble.style.position = 'absolute';
+      });
+      
+      bubble.addEventListener('touchend', (e) => {
+        isDragging = false;
+      });
+      
+      // Double tap en mobile - explotar
+      let lastTap = 0;
+      bubble.addEventListener('touchend', (e) => {
+        const currentTime = new Date().getTime();
+        const tapLength = currentTime - lastTap;
+        
+        if (tapLength < 300 && tapLength > 0) {
+          // Double tap detectado
+          e.preventDefault();
+          
+          // Reproducir sonido
+          popSound.currentTime = 0;
+          popSound.play().catch(() => {
+            // Ignorar si el sonido no se puede reproducir
+          });
+          
+          // Agregar clase de explosión
+          bubble.classList.add('popping');
+          
+          // Remover después de la animación
+          setTimeout(() => {
+            bubble.remove();
+          }, 400);
+          
+          document.removeEventListener('mousemove', followMouse);
+          lastTap = 0;
+        } else {
+          lastTap = currentTime;
+        }
+      });
     }
   }
 
